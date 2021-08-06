@@ -1,0 +1,25 @@
+[General]
+ipc_version=4
+file=hyperram_memory_interface
+module=HyperRAM_Memory_Interface_Top
+target_device=gw1nsr4c-009
+type=hyperram_emb
+version=1.0
+
+[Config]
+BURST_MODE=128
+CLK_TYPE=DIFF
+DEEP_POWER_DOWN=OFF
+DISABLE_IO=true
+DQ_WIDTH=8
+DRIVE_STRENGTH=34
+HYBRID_SLEEP_MODE=OFF
+INITIAL_LATENCY=6
+LANG=0
+MEMORY_CLK=159
+MEMORY_TYPE=W956x8MKY
+PASR=full
+PSRAM_WIDTH=8
+REFRESH_RATE=normal
+SIMULATION=false
+Synthesis_tool=Synplify Pro
