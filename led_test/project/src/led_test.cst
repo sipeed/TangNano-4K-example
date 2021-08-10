@@ -1,0 +1,14 @@
+//Copyright (C)2014-2021 Gowin Semiconductor Corporation.
+//All rights reserved. 
+//File Title: Physical Constraints file
+//GOWIN Version: 1.9.8
+//Part Number: GW1NSR-LV4CQN48PC7/I6
+//Device: GW1NSR-4C
+//Created Time: Tue 08 10 15:12:01 2021
+
+IO_LOC "led" 10;
+IO_PORT "led" PULL_MODE=NONE DRIVE=8;
+IO_LOC "sys_rst_n" 15;
+IO_PORT "sys_rst_n" PULL_MODE=UP;
+IO_LOC "sys_clk" 45;
+IO_PORT "sys_clk" PULL_MODE=UP;
