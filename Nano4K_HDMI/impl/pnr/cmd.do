@@ -1,0 +1,10 @@
+-d D:\FPGA\Nano4K_HDMI\impl\gwsynthesis\Nano4K_HDMI.vg
+-p GW1NSR-4C-QFN48P-7
+-pn GW1NSR-LV4CQN48PC7/I6
+-cst D:\FPGA\Nano4K_HDMI\src\Nano4K_HDMI.cst
+-cfg D:\FPGA\Nano4K_HDMI\impl\pnr\device.cfg
+-bit
+-tr
+-ph
+-timing
+-cst_error

@@ -1,0 +1,30 @@
+[
+ {
+  "InstFile" : "D:/FPGA/Nano4K_HDMI/src/top.v",
+  "InstLine" : 1,
+  "InstName" : "top",
+  "ModuleFile" : "D:/FPGA/Nano4K_HDMI/src/top.v",
+  "ModuleLine" : 1,
+  "ModuleName" : "top",
+  "SubInsts" : [
+   {
+    "InstFile" : "D:/FPGA/Nano4K_HDMI/src/top.v",
+    "InstLine" : 112,
+    "InstName" : "dvi_tx",
+    "ModuleFile" : "D:/FPGA/Nano4K_HDMI/src/dvi_tx/dvi_tx.v",
+    "ModuleLine" : 1042,
+    "ModuleName" : "DVI_TX_Top",
+    "SubInsts" : [
+     {
+      "InstFile" : "D:/FPGA/Nano4K_HDMI/src/dvi_tx/dvi_tx.v",
+      "InstLine" : 1073,
+      "InstName" : "rgb2dvi_inst",
+      "ModuleFile" : "D:/FPGA/Nano4K_HDMI/src/dvi_tx/dvi_tx.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "~rgb2dvi.DVI_TX_Top"
+     }
+    ]
+   }
+  ]
+ }
+]
