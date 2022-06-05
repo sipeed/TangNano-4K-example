@@ -1,0 +1,13 @@
+{
+	"configurations":	[{
+			"name":	"Win32",
+			"includePath":	["${workspaceFolder}/", "${workspaceFolder}/CORE", "${workspaceFolder}/PERIPHERAL/Includes", "${workspaceFolder}/SYSTEM", "${workspaceFolder}/USER"],
+			"defines":	["_DEBUG", "UNICODE", "_UNICODE", "__GNUC__", "__STARTUP_CLEAR_BSS"],
+			"windowsSdkVersion":	"10.0.18362.0",
+			"compilerPath":	"C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.27.29110/bin/Hostx64/x64/cl.exe",
+			"cStandard":	"c17",
+			"cppStandard":	"c++17",
+			"intelliSenseMode":	"msvc-x86"
+		}],
+	"version":	4
+}

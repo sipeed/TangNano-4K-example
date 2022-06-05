@@ -1,0 +1,2713 @@
+//Copyright (C)2014-2021 Gowin Semiconductor Corporation.
+//All rights reserved.
+//File Title: Post-PnR Simulation Model file
+//GOWIN Version: V1.9.8 Education
+//Created Time: Sat Jan 08 16:18:39 2022
+
+module Gowin_EMPU_Top(
+	sys_clk,
+	uart0_rxd,
+	reset_n,
+	uart0_txd,
+	gpio
+);
+input sys_clk;
+input uart0_rxd;
+input reset_n;
+output uart0_txd;
+inout [15:0] gpio;
+wire GND;
+wire VCC;
+wire [15:0] gpio;
+wire reset_n;
+wire sys_clk;
+wire uart0_rxd;
+wire uart0_txd;
+wire \Gowin_EMPU_inst/uart1_txd ;
+wire \Gowin_EMPU_inst/u_emcu_top_0_UART0BAUDTICK ;
+wire \Gowin_EMPU_inst/u_emcu_top_0_UART1BAUDTICK ;
+wire \Gowin_EMPU_inst/u_emcu_top_0_INTMONITOR ;
+wire \Gowin_EMPU_inst/ye ;
+wire \Gowin_EMPU_inst/sram0_cs ;
+wire \Gowin_EMPU_inst/targflash0_hsel ;
+wire \Gowin_EMPU_inst/targflash0_hreadymux ;
+wire \Gowin_EMPU_inst/targexp0_hsel ;
+wire \Gowin_EMPU_inst/targexp0_hwrite ;
+wire \Gowin_EMPU_inst/targexp0_exreq ;
+wire \Gowin_EMPU_inst/targexp0_hmastlock ;
+wire \Gowin_EMPU_inst/targexp0_hreadymux ;
+wire \Gowin_EMPU_inst/targexp0_hauser ;
+wire \Gowin_EMPU_inst/initexp0_hready ;
+wire \Gowin_EMPU_inst/initexp0_hresp ;
+wire \Gowin_EMPU_inst/initexp0_exresp ;
+wire \Gowin_EMPU_inst/apbtargexp2_psel ;
+wire \Gowin_EMPU_inst/apbtargexp2_penable ;
+wire \Gowin_EMPU_inst/apbtargexp2_pwrite ;
+wire \Gowin_EMPU_inst/u_emcu_top_0_DAPTDO ;
+wire \Gowin_EMPU_inst/u_emcu_top_0_DAPJTAGNSW ;
+wire \Gowin_EMPU_inst/u_emcu_top_0_DAPNTDOEN ;
+wire \Gowin_EMPU_inst/u_emcu_top_0_TPIUTRACEDATA3 ;
+wire \Gowin_EMPU_inst/u_emcu_top_0_TPIUTRACEDATA2 ;
+wire \Gowin_EMPU_inst/u_emcu_top_0_TPIUTRACEDATA1 ;
+wire \Gowin_EMPU_inst/trace_data ;
+wire \Gowin_EMPU_inst/trace_clk ;
+wire \Gowin_EMPU_inst/targflash0_readyout ;
+wire \Gowin_EMPU_inst/n100_6 ;
+wire \Gowin_EMPU_inst/apbtargexp2_pready ;
+wire [15:0] \Gowin_EMPU_inst/io_exp_output_o ;
+wire [15:0] \Gowin_EMPU_inst/io_exp_outputen_o ;
+wire [12:0] \Gowin_EMPU_inst/sram0_addr ;
+wire [3:0] \Gowin_EMPU_inst/sram0_wren ;
+wire [31:0] \Gowin_EMPU_inst/sram0_wdata ;
+wire [28:0] \Gowin_EMPU_inst/targflash0_haddr ;
+wire [1:0] \Gowin_EMPU_inst/targflash0_htrans ;
+wire [2:0] \Gowin_EMPU_inst/targflash0_hsize ;
+wire [2:0] \Gowin_EMPU_inst/targflash0_hburst ;
+wire [31:0] \Gowin_EMPU_inst/targexp0_haddr ;
+wire [1:0] \Gowin_EMPU_inst/targexp0_htrans ;
+wire [2:0] \Gowin_EMPU_inst/targexp0_hsize ;
+wire [2:0] \Gowin_EMPU_inst/targexp0_hburst ;
+wire [3:0] \Gowin_EMPU_inst/targexp0_hprot ;
+wire [1:0] \Gowin_EMPU_inst/targexp0_memattr ;
+wire [3:0] \Gowin_EMPU_inst/targexp0_hmaster ;
+wire [31:0] \Gowin_EMPU_inst/targexp0_hwdata ;
+wire [3:0] \Gowin_EMPU_inst/targexp0_hwuser ;
+wire [31:0] \Gowin_EMPU_inst/initexp0_hrdata ;
+wire [2:0] \Gowin_EMPU_inst/initexp0_hruser ;
+wire [3:0] \Gowin_EMPU_inst/apbtargexp2_pstrb ;
+wire [2:0] \Gowin_EMPU_inst/apbtargexp2_pprot ;
+wire [11:0] \Gowin_EMPU_inst/apbtargexp2_paddr ;
+wire [31:0] \Gowin_EMPU_inst/apbtargexp2_pwdata ;
+wire [15:0] \Gowin_EMPU_inst/io_exp_input_i ;
+wire [31:0] \Gowin_EMPU_inst/targflash0_hrdata ;
+wire [31:0] \Gowin_EMPU_inst/sram0_rdata ;
+wire [12:0] \Gowin_EMPU_inst/apbtargexp2_prdata ;
+wire \Gowin_EMPU_inst/u_gpio/n5_6 ;
+wire \Gowin_EMPU_inst/u_gpio/n7_6 ;
+wire \Gowin_EMPU_inst/u_gpio/n9_6 ;
+wire \Gowin_EMPU_inst/u_gpio/n11_6 ;
+wire \Gowin_EMPU_inst/u_gpio/n13_6 ;
+wire \Gowin_EMPU_inst/u_gpio/n15_6 ;
+wire \Gowin_EMPU_inst/u_gpio/n17_6 ;
+wire \Gowin_EMPU_inst/u_gpio/n19_6 ;
+wire \Gowin_EMPU_inst/u_gpio/n21_6 ;
+wire \Gowin_EMPU_inst/u_gpio/n23_6 ;
+wire \Gowin_EMPU_inst/u_gpio/n25_6 ;
+wire \Gowin_EMPU_inst/u_gpio/n27_6 ;
+wire \Gowin_EMPU_inst/u_gpio/n29_6 ;
+wire \Gowin_EMPU_inst/u_gpio/n31_6 ;
+wire \Gowin_EMPU_inst/u_gpio/n33_6 ;
+wire \Gowin_EMPU_inst/u_gpio/n35_6 ;
+wire \Gowin_EMPU_inst/u_flash_wrap/n77_4 ;
+wire \Gowin_EMPU_inst/u_flash_wrap/n145_3 ;
+wire \Gowin_EMPU_inst/u_flash_wrap/n146_3 ;
+wire \Gowin_EMPU_inst/u_flash_wrap/n147_3 ;
+wire \Gowin_EMPU_inst/u_flash_wrap/n148_3 ;
+wire \Gowin_EMPU_inst/u_flash_wrap/n149_3 ;
+wire \Gowin_EMPU_inst/u_flash_wrap/n150_3 ;
+wire \Gowin_EMPU_inst/u_flash_wrap/n151_3 ;
+wire \Gowin_EMPU_inst/u_flash_wrap/n152_3 ;
+wire \Gowin_EMPU_inst/u_flash_wrap/n153_3 ;
+wire \Gowin_EMPU_inst/u_flash_wrap/n154_3 ;
+wire \Gowin_EMPU_inst/u_flash_wrap/n155_3 ;
+wire \Gowin_EMPU_inst/u_flash_wrap/n156_3 ;
+wire \Gowin_EMPU_inst/u_flash_wrap/n157_3 ;
+wire \Gowin_EMPU_inst/u_flash_wrap/rom_addr_12_10 ;
+wire \Gowin_EMPU_inst/u_flash_wrap/hready_out_6 ;
+wire \Gowin_EMPU_inst/u_flash_wrap/n214_5 ;
+wire \Gowin_EMPU_inst/u_flash_wrap/n76_5 ;
+wire \Gowin_EMPU_inst/u_flash_wrap/n95_5 ;
+wire \Gowin_EMPU_inst/u_flash_wrap/n77_5 ;
+wire \Gowin_EMPU_inst/u_flash_wrap/rom_addr_12_11 ;
+wire \Gowin_EMPU_inst/u_flash_wrap/hsel_1d ;
+wire \Gowin_EMPU_inst/u_flash_wrap/hready_out_1d ;
+wire \Gowin_EMPU_inst/u_flash_wrap/se_out ;
+wire [1:0] \Gowin_EMPU_inst/u_flash_wrap/bus_cnt ;
+wire [12:0] \Gowin_EMPU_inst/u_flash_wrap/haddr_1d ;
+wire [1:1] \Gowin_EMPU_inst/u_flash_wrap/htrans_1d ;
+wire [12:0] \Gowin_EMPU_inst/u_flash_wrap/rom_addr ;
+wire [31:4] \Gowin_EMPU_inst/u_sram_subsystem/DO ;
+wire [31:4] \Gowin_EMPU_inst/u_sram_subsystem/DO_0 ;
+wire [31:4] \Gowin_EMPU_inst/u_sram_subsystem/DO_1 ;
+wire [31:4] \Gowin_EMPU_inst/u_sram_subsystem/DO_2 ;
+wire [31:4] \Gowin_EMPU_inst/u_sram_subsystem/DO_3 ;
+wire [31:4] \Gowin_EMPU_inst/u_sram_subsystem/DO_4 ;
+wire [31:4] \Gowin_EMPU_inst/u_sram_subsystem/DO_5 ;
+wire [31:4] \Gowin_EMPU_inst/u_sram_subsystem/DO_6 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/apbtargexp2_prdata_0_5 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/apbtargexp2_prdata_0_6 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/SPI_ACK_O ;
+wire [12:0] \Gowin_EMPU_inst/u_gw_peripherals_interconnect/SPI_DAT_O ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_slave_mux/apbtargexp2_pready_15 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n88_3 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n90_3 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n92_3 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n95_3 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n97_3 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n162_3 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n190_3 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n313_3 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n314_3 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n315_3 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n316_3 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n317_3 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n318_3 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n319_3 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n320_3 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n386_3 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n416_4 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n430_3 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n431_3 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n432_3 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n433_3 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n434_3 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n435_3 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n460_3 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n742_3 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n765_3 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_18 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/pending_data_8 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt_5_8 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_toe_8 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n416_6 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n538_20 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n615_5 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n614_5 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n612_5 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n611_5 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n610_5 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n537_18 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n436_5 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n429_5 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n479_5 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n478_5 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n477_5 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n476_5 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n475_5 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n312_5 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n311_5 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n310_5 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n308_5 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n88_4 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n90_4 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n313_4 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n314_4 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n315_4 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n316_4 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n317_4 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n318_4 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n319_4 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n319_5 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n320_4 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n416_7 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n416_8 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n428_4 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n764_4 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n765_4 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_19 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_20 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_21 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt_5_9 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n615_6 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n615_7 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n614_6 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n614_7 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n613_6 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n479_6 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n476_6 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n313_5 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n314_5 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n315_5 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n316_5 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n317_5 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n318_5 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n319_6 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n320_5 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n416_9 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_22 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_23 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_24 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n615_8 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n615_9 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n614_8 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_25 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_26 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n428_6 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rrdy_10 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n613_8 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n_status_1_11 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n778_7 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n764_6 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_trdy_10 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n752_5 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n163_5 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n108_5 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n105_5 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n225_16 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n225_14 ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw04_cs ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw08_cs ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw0c_cs ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw10_cs ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_wr ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rd ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_dir ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_cpha ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_cpol ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_iroe ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_itoe ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_itrdy ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_irrdy ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_ie ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_sso ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_latch_flag ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_tmt ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw00_cs ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/pending_data ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_trdy ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_toe ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rrdy ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_roe ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/SCLK_Z ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/read_wait_done ;
+wire \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ;
+wire [12:0] \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data ;
+wire [7:0] \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rxdata ;
+wire [7:0] \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_txdata ;
+wire [1:0] \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_clksel ;
+wire [0:0] \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_ssmask ;
+wire [7:0] \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data ;
+wire [4:0] \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/clock_cnt ;
+wire [2:0] \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status ;
+wire [5:0] \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt ;
+wire [2:0] \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n_status ;
+VCC VCC_cZ (
+  .V(VCC)
+);
+GND GND_cZ (
+  .G(GND)
+);
+GSR \Gowin_EMPU_inst/sys_reset  (
+	.GSRI(reset_n)
+);
+IOBUF \Gowin_EMPU_inst/u_gpio/gpio0  (
+	.I(\Gowin_EMPU_inst/io_exp_output_o [0]),
+	.OEN(\Gowin_EMPU_inst/u_gpio/n5_6 ),
+	.IO(gpio[0]),
+	.O(\Gowin_EMPU_inst/io_exp_input_i [0])
+);
+IOBUF \Gowin_EMPU_inst/u_gpio/gpio1  (
+	.I(\Gowin_EMPU_inst/io_exp_output_o [1]),
+	.OEN(\Gowin_EMPU_inst/u_gpio/n7_6 ),
+	.IO(gpio[1]),
+	.O(\Gowin_EMPU_inst/io_exp_input_i [1])
+);
+IOBUF \Gowin_EMPU_inst/u_gpio/gpio2  (
+	.I(\Gowin_EMPU_inst/io_exp_output_o [2]),
+	.OEN(\Gowin_EMPU_inst/u_gpio/n9_6 ),
+	.IO(gpio[2]),
+	.O(\Gowin_EMPU_inst/io_exp_input_i [2])
+);
+IOBUF \Gowin_EMPU_inst/u_gpio/gpio3  (
+	.I(\Gowin_EMPU_inst/io_exp_output_o [3]),
+	.OEN(\Gowin_EMPU_inst/u_gpio/n11_6 ),
+	.IO(gpio[3]),
+	.O(\Gowin_EMPU_inst/io_exp_input_i [3])
+);
+IOBUF \Gowin_EMPU_inst/u_gpio/gpio4  (
+	.I(\Gowin_EMPU_inst/io_exp_output_o [4]),
+	.OEN(\Gowin_EMPU_inst/u_gpio/n13_6 ),
+	.IO(gpio[4]),
+	.O(\Gowin_EMPU_inst/io_exp_input_i [4])
+);
+IOBUF \Gowin_EMPU_inst/u_gpio/gpio5  (
+	.I(\Gowin_EMPU_inst/io_exp_output_o [5]),
+	.OEN(\Gowin_EMPU_inst/u_gpio/n15_6 ),
+	.IO(gpio[5]),
+	.O(\Gowin_EMPU_inst/io_exp_input_i [5])
+);
+IOBUF \Gowin_EMPU_inst/u_gpio/gpio6  (
+	.I(\Gowin_EMPU_inst/io_exp_output_o [6]),
+	.OEN(\Gowin_EMPU_inst/u_gpio/n17_6 ),
+	.IO(gpio[6]),
+	.O(\Gowin_EMPU_inst/io_exp_input_i [6])
+);
+IOBUF \Gowin_EMPU_inst/u_gpio/gpio7  (
+	.I(\Gowin_EMPU_inst/io_exp_output_o [7]),
+	.OEN(\Gowin_EMPU_inst/u_gpio/n19_6 ),
+	.IO(gpio[7]),
+	.O(\Gowin_EMPU_inst/io_exp_input_i [7])
+);
+IOBUF \Gowin_EMPU_inst/u_gpio/gpio8  (
+	.I(\Gowin_EMPU_inst/io_exp_output_o [8]),
+	.OEN(\Gowin_EMPU_inst/u_gpio/n21_6 ),
+	.IO(gpio[8]),
+	.O(\Gowin_EMPU_inst/io_exp_input_i [8])
+);
+IOBUF \Gowin_EMPU_inst/u_gpio/gpio9  (
+	.I(\Gowin_EMPU_inst/io_exp_output_o [9]),
+	.OEN(\Gowin_EMPU_inst/u_gpio/n23_6 ),
+	.IO(gpio[9]),
+	.O(\Gowin_EMPU_inst/io_exp_input_i [9])
+);
+IOBUF \Gowin_EMPU_inst/u_gpio/gpio10  (
+	.I(\Gowin_EMPU_inst/io_exp_output_o [10]),
+	.OEN(\Gowin_EMPU_inst/u_gpio/n25_6 ),
+	.IO(gpio[10]),
+	.O(\Gowin_EMPU_inst/io_exp_input_i [10])
+);
+IOBUF \Gowin_EMPU_inst/u_gpio/gpio11  (
+	.I(\Gowin_EMPU_inst/io_exp_output_o [11]),
+	.OEN(\Gowin_EMPU_inst/u_gpio/n27_6 ),
+	.IO(gpio[11]),
+	.O(\Gowin_EMPU_inst/io_exp_input_i [11])
+);
+IOBUF \Gowin_EMPU_inst/u_gpio/gpio12  (
+	.I(\Gowin_EMPU_inst/io_exp_output_o [12]),
+	.OEN(\Gowin_EMPU_inst/u_gpio/n29_6 ),
+	.IO(gpio[12]),
+	.O(\Gowin_EMPU_inst/io_exp_input_i [12])
+);
+IOBUF \Gowin_EMPU_inst/u_gpio/gpio13  (
+	.I(\Gowin_EMPU_inst/io_exp_output_o [13]),
+	.OEN(\Gowin_EMPU_inst/u_gpio/n31_6 ),
+	.IO(gpio[13]),
+	.O(\Gowin_EMPU_inst/io_exp_input_i [13])
+);
+IOBUF \Gowin_EMPU_inst/u_gpio/gpio14  (
+	.I(\Gowin_EMPU_inst/io_exp_output_o [14]),
+	.OEN(\Gowin_EMPU_inst/u_gpio/n33_6 ),
+	.IO(gpio[14]),
+	.O(\Gowin_EMPU_inst/io_exp_input_i [14])
+);
+IOBUF \Gowin_EMPU_inst/u_gpio/gpio15  (
+	.I(\Gowin_EMPU_inst/io_exp_output_o [15]),
+	.OEN(\Gowin_EMPU_inst/u_gpio/n35_6 ),
+	.IO(gpio[15]),
+	.O(\Gowin_EMPU_inst/io_exp_input_i [15])
+);
+EMCU \Gowin_EMPU_inst/u_emcu_top  (
+	.FCLK(sys_clk),
+	.PORESETN(reset_n),
+	.SYSRESETN(reset_n),
+	.RTCSRCCLK(GND),
+	.UART0RXDI(uart0_rxd),
+	.UART1RXDI(GND),
+	.TARGFLASH0HRESP(GND),
+	.TARGFLASH0EXRESP(GND),
+	.TARGFLASH0HREADYOUT(\Gowin_EMPU_inst/targflash0_readyout ),
+	.TARGEXP0HREADYOUT(GND),
+	.TARGEXP0HRESP(VCC),
+	.TARGEXP0EXRESP(GND),
+	.INITEXP0HSEL(GND),
+	.INITEXP0HWRITE(GND),
+	.INITEXP0EXREQ(GND),
+	.INITEXP0HMASTLOCK(GND),
+	.INITEXP0HAUSER(GND),
+	.APBTARGEXP2PREADY(\Gowin_EMPU_inst/apbtargexp2_pready ),
+	.APBTARGEXP2PSLVERR(GND),
+	.DAPSWDITMS(GND),
+	.DAPTDI(GND),
+	.DAPNTRST(VCC),
+	.DAPSWCLKTCK(GND),
+	.FLASHERR(GND),
+	.FLASHINT(GND),
+	.INITEXP0HTRANS({GND, GND}),
+	.IOEXPINPUTI({\Gowin_EMPU_inst/io_exp_input_i [15:0]}),
+	.SRAM0RDATA({\Gowin_EMPU_inst/sram0_rdata [31:0]}),
+	.TARGFLASH0HRDATA({\Gowin_EMPU_inst/targflash0_hrdata [31:0]}),
+	.TARGFLASH0HRUSER({GND, GND, GND}),
+	.TARGEXP0HRDATA({GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND}),
+	.TARGEXP0HRUSER({GND, GND, GND}),
+	.INITEXP0HADDR({GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND}),
+	.INITEXP0HSIZE({GND, GND, GND}),
+	.INITEXP0HBURST({GND, GND, GND}),
+	.INITEXP0HPROT({GND, GND, GND, GND}),
+	.INITEXP0MEMATTR({GND, GND}),
+	.INITEXP0HMASTER({GND, GND, GND, GND}),
+	.INITEXP0HWDATA({GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND}),
+	.INITEXP0HWUSER({GND, GND, GND, GND}),
+	.APBTARGEXP2PRDATA({GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, \Gowin_EMPU_inst/apbtargexp2_prdata [12], GND, \Gowin_EMPU_inst/apbtargexp2_prdata [10:0]}),
+	.MTXREMAP({VCC, VCC, VCC, VCC}),
+	.GPINT({GND, GND, GND, GND, GND}),
+	.UART0TXDO(uart0_txd),
+	.UART1TXDO(\Gowin_EMPU_inst/uart1_txd ),
+	.UART0BAUDTICK(\Gowin_EMPU_inst/u_emcu_top_0_UART0BAUDTICK ),
+	.UART1BAUDTICK(\Gowin_EMPU_inst/u_emcu_top_0_UART1BAUDTICK ),
+	.INTMONITOR(\Gowin_EMPU_inst/u_emcu_top_0_INTMONITOR ),
+	.SRAM0CS(\Gowin_EMPU_inst/sram0_cs ),
+	.MTXHRESETN(\Gowin_EMPU_inst/ye ),
+	.TARGFLASH0HSEL(\Gowin_EMPU_inst/targflash0_hsel ),
+	.TARGFLASH0HREADYMUX(\Gowin_EMPU_inst/targflash0_hreadymux ),
+	.TARGEXP0HSEL(\Gowin_EMPU_inst/targexp0_hsel ),
+	.TARGEXP0HWRITE(\Gowin_EMPU_inst/targexp0_hwrite ),
+	.TARGEXP0EXREQ(\Gowin_EMPU_inst/targexp0_exreq ),
+	.TARGEXP0HMASTLOCK(\Gowin_EMPU_inst/targexp0_hmastlock ),
+	.TARGEXP0HREADYMUX(\Gowin_EMPU_inst/targexp0_hreadymux ),
+	.TARGEXP0HAUSER(\Gowin_EMPU_inst/targexp0_hauser ),
+	.INITEXP0HREADY(\Gowin_EMPU_inst/initexp0_hready ),
+	.INITEXP0HRESP(\Gowin_EMPU_inst/initexp0_hresp ),
+	.INITEXP0EXRESP(\Gowin_EMPU_inst/initexp0_exresp ),
+	.APBTARGEXP2PSEL(\Gowin_EMPU_inst/apbtargexp2_psel ),
+	.APBTARGEXP2PENABLE(\Gowin_EMPU_inst/apbtargexp2_penable ),
+	.APBTARGEXP2PWRITE(\Gowin_EMPU_inst/apbtargexp2_pwrite ),
+	.DAPTDO(\Gowin_EMPU_inst/u_emcu_top_0_DAPTDO ),
+	.DAPNTDOEN(\Gowin_EMPU_inst/u_emcu_top_0_DAPNTDOEN ),
+	.DAPJTAGNSW(\Gowin_EMPU_inst/u_emcu_top_0_DAPJTAGNSW ),
+	.TPIUTRACECLK(\Gowin_EMPU_inst/trace_clk ),
+	.IOEXPOUTPUTO({\Gowin_EMPU_inst/io_exp_output_o [15:0]}),
+	.IOEXPOUTPUTENO({\Gowin_EMPU_inst/io_exp_outputen_o [15:0]}),
+	.SRAM0ADDR({\Gowin_EMPU_inst/sram0_addr [12:0]}),
+	.SRAM0WREN({\Gowin_EMPU_inst/sram0_wren [3:0]}),
+	.SRAM0WDATA({\Gowin_EMPU_inst/sram0_wdata [31:0]}),
+	.TARGFLASH0HADDR({\Gowin_EMPU_inst/targflash0_haddr [28:0]}),
+	.TARGFLASH0HTRANS({\Gowin_EMPU_inst/targflash0_htrans [1:0]}),
+	.TARGFLASH0HSIZE({\Gowin_EMPU_inst/targflash0_hsize [2:0]}),
+	.TARGFLASH0HBURST({\Gowin_EMPU_inst/targflash0_hburst [2:0]}),
+	.TARGEXP0HADDR({\Gowin_EMPU_inst/targexp0_haddr [31:0]}),
+	.TARGEXP0HTRANS({\Gowin_EMPU_inst/targexp0_htrans [1:0]}),
+	.TARGEXP0MEMATTR({\Gowin_EMPU_inst/targexp0_memattr [1:0]}),
+	.TARGEXP0HSIZE({\Gowin_EMPU_inst/targexp0_hsize [2:0]}),
+	.TARGEXP0HPROT({\Gowin_EMPU_inst/targexp0_hprot [3:0]}),
+	.TARGEXP0HMASTER({\Gowin_EMPU_inst/targexp0_hmaster [3:0]}),
+	.TARGEXP0HWDATA({\Gowin_EMPU_inst/targexp0_hwdata [31:0]}),
+	.TARGEXP0HWUSER({\Gowin_EMPU_inst/targexp0_hwuser [3:0]}),
+	.INITEXP0HRDATA({\Gowin_EMPU_inst/initexp0_hrdata [31:0]}),
+	.INITEXP0HRUSER({\Gowin_EMPU_inst/initexp0_hruser [2:0]}),
+	.APBTARGEXP2PSTRB({\Gowin_EMPU_inst/apbtargexp2_pstrb [3:0]}),
+	.APBTARGEXP2PPROT({\Gowin_EMPU_inst/apbtargexp2_pprot [2:0]}),
+	.APBTARGEXP2PADDR({\Gowin_EMPU_inst/apbtargexp2_paddr [11:0]}),
+	.APBTARGEXP2PWDATA({\Gowin_EMPU_inst/apbtargexp2_pwdata [31:0]}),
+	.TPIUTRACEDATA({\Gowin_EMPU_inst/u_emcu_top_0_TPIUTRACEDATA3 , \Gowin_EMPU_inst/u_emcu_top_0_TPIUTRACEDATA2 , \Gowin_EMPU_inst/u_emcu_top_0_TPIUTRACEDATA1 , \Gowin_EMPU_inst/trace_data }),
+	.TARGEXP0HBURST({\Gowin_EMPU_inst/targexp0_hburst [2:0]})
+);
+INV \Gowin_EMPU_inst/u_gpio/n5_s2  (
+	.I(\Gowin_EMPU_inst/io_exp_outputen_o [0]),
+	.O(\Gowin_EMPU_inst/u_gpio/n5_6 )
+);
+INV \Gowin_EMPU_inst/u_gpio/n7_s2  (
+	.I(\Gowin_EMPU_inst/io_exp_outputen_o [1]),
+	.O(\Gowin_EMPU_inst/u_gpio/n7_6 )
+);
+INV \Gowin_EMPU_inst/u_gpio/n9_s2  (
+	.I(\Gowin_EMPU_inst/io_exp_outputen_o [2]),
+	.O(\Gowin_EMPU_inst/u_gpio/n9_6 )
+);
+INV \Gowin_EMPU_inst/u_gpio/n11_s2  (
+	.I(\Gowin_EMPU_inst/io_exp_outputen_o [3]),
+	.O(\Gowin_EMPU_inst/u_gpio/n11_6 )
+);
+INV \Gowin_EMPU_inst/u_gpio/n13_s2  (
+	.I(\Gowin_EMPU_inst/io_exp_outputen_o [4]),
+	.O(\Gowin_EMPU_inst/u_gpio/n13_6 )
+);
+INV \Gowin_EMPU_inst/u_gpio/n15_s2  (
+	.I(\Gowin_EMPU_inst/io_exp_outputen_o [5]),
+	.O(\Gowin_EMPU_inst/u_gpio/n15_6 )
+);
+INV \Gowin_EMPU_inst/u_gpio/n17_s2  (
+	.I(\Gowin_EMPU_inst/io_exp_outputen_o [6]),
+	.O(\Gowin_EMPU_inst/u_gpio/n17_6 )
+);
+INV \Gowin_EMPU_inst/u_gpio/n19_s2  (
+	.I(\Gowin_EMPU_inst/io_exp_outputen_o [7]),
+	.O(\Gowin_EMPU_inst/u_gpio/n19_6 )
+);
+INV \Gowin_EMPU_inst/u_gpio/n21_s2  (
+	.I(\Gowin_EMPU_inst/io_exp_outputen_o [8]),
+	.O(\Gowin_EMPU_inst/u_gpio/n21_6 )
+);
+INV \Gowin_EMPU_inst/u_gpio/n23_s2  (
+	.I(\Gowin_EMPU_inst/io_exp_outputen_o [9]),
+	.O(\Gowin_EMPU_inst/u_gpio/n23_6 )
+);
+INV \Gowin_EMPU_inst/u_gpio/n25_s2  (
+	.I(\Gowin_EMPU_inst/io_exp_outputen_o [10]),
+	.O(\Gowin_EMPU_inst/u_gpio/n25_6 )
+);
+INV \Gowin_EMPU_inst/u_gpio/n27_s2  (
+	.I(\Gowin_EMPU_inst/io_exp_outputen_o [11]),
+	.O(\Gowin_EMPU_inst/u_gpio/n27_6 )
+);
+INV \Gowin_EMPU_inst/u_gpio/n29_s2  (
+	.I(\Gowin_EMPU_inst/io_exp_outputen_o [12]),
+	.O(\Gowin_EMPU_inst/u_gpio/n29_6 )
+);
+INV \Gowin_EMPU_inst/u_gpio/n31_s2  (
+	.I(\Gowin_EMPU_inst/io_exp_outputen_o [13]),
+	.O(\Gowin_EMPU_inst/u_gpio/n31_6 )
+);
+INV \Gowin_EMPU_inst/u_gpio/n33_s2  (
+	.I(\Gowin_EMPU_inst/io_exp_outputen_o [14]),
+	.O(\Gowin_EMPU_inst/u_gpio/n33_6 )
+);
+INV \Gowin_EMPU_inst/u_gpio/n35_s2  (
+	.I(\Gowin_EMPU_inst/io_exp_outputen_o [15]),
+	.O(\Gowin_EMPU_inst/u_gpio/n35_6 )
+);
+LUT3 \Gowin_EMPU_inst/u_flash_wrap/n77_s0  (
+	.I0(\Gowin_EMPU_inst/u_flash_wrap/bus_cnt [0]),
+	.I1(\Gowin_EMPU_inst/targflash0_readyout ),
+	.I2(\Gowin_EMPU_inst/u_flash_wrap/n77_5 ),
+	.F(\Gowin_EMPU_inst/u_flash_wrap/n77_4 )
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/n77_s0 .INIT=8'hF1;
+LUT3 \Gowin_EMPU_inst/u_flash_wrap/n145_s0  (
+	.I0(\Gowin_EMPU_inst/targflash0_haddr [14]),
+	.I1(\Gowin_EMPU_inst/u_flash_wrap/haddr_1d [12]),
+	.I2(\Gowin_EMPU_inst/u_flash_wrap/n77_5 ),
+	.F(\Gowin_EMPU_inst/u_flash_wrap/n145_3 )
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/n145_s0 .INIT=8'hAC;
+LUT3 \Gowin_EMPU_inst/u_flash_wrap/n146_s0  (
+	.I0(\Gowin_EMPU_inst/targflash0_haddr [13]),
+	.I1(\Gowin_EMPU_inst/u_flash_wrap/haddr_1d [11]),
+	.I2(\Gowin_EMPU_inst/u_flash_wrap/n77_5 ),
+	.F(\Gowin_EMPU_inst/u_flash_wrap/n146_3 )
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/n146_s0 .INIT=8'hAC;
+LUT3 \Gowin_EMPU_inst/u_flash_wrap/n147_s0  (
+	.I0(\Gowin_EMPU_inst/targflash0_haddr [12]),
+	.I1(\Gowin_EMPU_inst/u_flash_wrap/haddr_1d [10]),
+	.I2(\Gowin_EMPU_inst/u_flash_wrap/n77_5 ),
+	.F(\Gowin_EMPU_inst/u_flash_wrap/n147_3 )
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/n147_s0 .INIT=8'hAC;
+LUT3 \Gowin_EMPU_inst/u_flash_wrap/n148_s0  (
+	.I0(\Gowin_EMPU_inst/targflash0_haddr [11]),
+	.I1(\Gowin_EMPU_inst/u_flash_wrap/haddr_1d [9]),
+	.I2(\Gowin_EMPU_inst/u_flash_wrap/n77_5 ),
+	.F(\Gowin_EMPU_inst/u_flash_wrap/n148_3 )
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/n148_s0 .INIT=8'hAC;
+LUT3 \Gowin_EMPU_inst/u_flash_wrap/n149_s0  (
+	.I0(\Gowin_EMPU_inst/targflash0_haddr [10]),
+	.I1(\Gowin_EMPU_inst/u_flash_wrap/haddr_1d [8]),
+	.I2(\Gowin_EMPU_inst/u_flash_wrap/n77_5 ),
+	.F(\Gowin_EMPU_inst/u_flash_wrap/n149_3 )
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/n149_s0 .INIT=8'hAC;
+LUT3 \Gowin_EMPU_inst/u_flash_wrap/n150_s0  (
+	.I0(\Gowin_EMPU_inst/targflash0_haddr [9]),
+	.I1(\Gowin_EMPU_inst/u_flash_wrap/haddr_1d [7]),
+	.I2(\Gowin_EMPU_inst/u_flash_wrap/n77_5 ),
+	.F(\Gowin_EMPU_inst/u_flash_wrap/n150_3 )
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/n150_s0 .INIT=8'hAC;
+LUT3 \Gowin_EMPU_inst/u_flash_wrap/n151_s0  (
+	.I0(\Gowin_EMPU_inst/targflash0_haddr [8]),
+	.I1(\Gowin_EMPU_inst/u_flash_wrap/haddr_1d [6]),
+	.I2(\Gowin_EMPU_inst/u_flash_wrap/n77_5 ),
+	.F(\Gowin_EMPU_inst/u_flash_wrap/n151_3 )
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/n151_s0 .INIT=8'hAC;
+LUT3 \Gowin_EMPU_inst/u_flash_wrap/n152_s0  (
+	.I0(\Gowin_EMPU_inst/targflash0_haddr [7]),
+	.I1(\Gowin_EMPU_inst/u_flash_wrap/haddr_1d [5]),
+	.I2(\Gowin_EMPU_inst/u_flash_wrap/n77_5 ),
+	.F(\Gowin_EMPU_inst/u_flash_wrap/n152_3 )
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/n152_s0 .INIT=8'hAC;
+LUT3 \Gowin_EMPU_inst/u_flash_wrap/n153_s0  (
+	.I0(\Gowin_EMPU_inst/targflash0_haddr [6]),
+	.I1(\Gowin_EMPU_inst/u_flash_wrap/haddr_1d [4]),
+	.I2(\Gowin_EMPU_inst/u_flash_wrap/n77_5 ),
+	.F(\Gowin_EMPU_inst/u_flash_wrap/n153_3 )
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/n153_s0 .INIT=8'hAC;
+LUT3 \Gowin_EMPU_inst/u_flash_wrap/n154_s0  (
+	.I0(\Gowin_EMPU_inst/targflash0_haddr [5]),
+	.I1(\Gowin_EMPU_inst/u_flash_wrap/haddr_1d [3]),
+	.I2(\Gowin_EMPU_inst/u_flash_wrap/n77_5 ),
+	.F(\Gowin_EMPU_inst/u_flash_wrap/n154_3 )
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/n154_s0 .INIT=8'hAC;
+LUT3 \Gowin_EMPU_inst/u_flash_wrap/n155_s0  (
+	.I0(\Gowin_EMPU_inst/targflash0_haddr [4]),
+	.I1(\Gowin_EMPU_inst/u_flash_wrap/haddr_1d [2]),
+	.I2(\Gowin_EMPU_inst/u_flash_wrap/n77_5 ),
+	.F(\Gowin_EMPU_inst/u_flash_wrap/n155_3 )
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/n155_s0 .INIT=8'hAC;
+LUT3 \Gowin_EMPU_inst/u_flash_wrap/n156_s0  (
+	.I0(\Gowin_EMPU_inst/targflash0_haddr [3]),
+	.I1(\Gowin_EMPU_inst/u_flash_wrap/haddr_1d [1]),
+	.I2(\Gowin_EMPU_inst/u_flash_wrap/n77_5 ),
+	.F(\Gowin_EMPU_inst/u_flash_wrap/n156_3 )
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/n156_s0 .INIT=8'hAC;
+LUT3 \Gowin_EMPU_inst/u_flash_wrap/n157_s0  (
+	.I0(\Gowin_EMPU_inst/targflash0_haddr [2]),
+	.I1(\Gowin_EMPU_inst/u_flash_wrap/haddr_1d [0]),
+	.I2(\Gowin_EMPU_inst/u_flash_wrap/n77_5 ),
+	.F(\Gowin_EMPU_inst/u_flash_wrap/n157_3 )
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/n157_s0 .INIT=8'hAC;
+LUT4 \Gowin_EMPU_inst/u_flash_wrap/rom_addr_12_s4  (
+	.I0(\Gowin_EMPU_inst/u_flash_wrap/rom_addr_12_11 ),
+	.I1(\Gowin_EMPU_inst/u_flash_wrap/n95_5 ),
+	.I2(\Gowin_EMPU_inst/u_flash_wrap/bus_cnt [0]),
+	.I3(\Gowin_EMPU_inst/u_flash_wrap/bus_cnt [1]),
+	.F(\Gowin_EMPU_inst/u_flash_wrap/rom_addr_12_10 )
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/rom_addr_12_s4 .INIT=16'h000B;
+LUT3 \Gowin_EMPU_inst/u_flash_wrap/hready_out_s3  (
+	.I0(\Gowin_EMPU_inst/u_flash_wrap/bus_cnt [0]),
+	.I1(\Gowin_EMPU_inst/u_flash_wrap/bus_cnt [1]),
+	.I2(\Gowin_EMPU_inst/targflash0_readyout ),
+	.F(\Gowin_EMPU_inst/u_flash_wrap/hready_out_6 )
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/hready_out_s3 .INIT=8'hF4;
+LUT2 \Gowin_EMPU_inst/u_flash_wrap/n214_s1  (
+	.I0(\Gowin_EMPU_inst/u_flash_wrap/se_out ),
+	.I1(\Gowin_EMPU_inst/u_flash_wrap/rom_addr_12_10 ),
+	.F(\Gowin_EMPU_inst/u_flash_wrap/n214_5 )
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/n214_s1 .INIT=4'h4;
+LUT3 \Gowin_EMPU_inst/u_flash_wrap/n76_s1  (
+	.I0(\Gowin_EMPU_inst/targflash0_readyout ),
+	.I1(\Gowin_EMPU_inst/u_flash_wrap/bus_cnt [0]),
+	.I2(\Gowin_EMPU_inst/u_flash_wrap/bus_cnt [1]),
+	.F(\Gowin_EMPU_inst/u_flash_wrap/n76_5 )
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/n76_s1 .INIT=8'h14;
+LUT3 \Gowin_EMPU_inst/u_flash_wrap/n95_s1  (
+	.I0(\Gowin_EMPU_inst/targflash0_hsel ),
+	.I1(\Gowin_EMPU_inst/targflash0_readyout ),
+	.I2(\Gowin_EMPU_inst/targflash0_htrans [1]),
+	.F(\Gowin_EMPU_inst/u_flash_wrap/n95_5 )
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/n95_s1 .INIT=8'h7F;
+LUT3 \Gowin_EMPU_inst/u_flash_wrap/n77_s1  (
+	.I0(\Gowin_EMPU_inst/u_flash_wrap/bus_cnt [0]),
+	.I1(\Gowin_EMPU_inst/u_flash_wrap/bus_cnt [1]),
+	.I2(\Gowin_EMPU_inst/u_flash_wrap/n95_5 ),
+	.F(\Gowin_EMPU_inst/u_flash_wrap/n77_5 )
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/n77_s1 .INIT=8'h01;
+LUT3 \Gowin_EMPU_inst/u_flash_wrap/rom_addr_12_s5  (
+	.I0(\Gowin_EMPU_inst/u_flash_wrap/hsel_1d ),
+	.I1(\Gowin_EMPU_inst/u_flash_wrap/hready_out_1d ),
+	.I2(\Gowin_EMPU_inst/u_flash_wrap/htrans_1d [1]),
+	.F(\Gowin_EMPU_inst/u_flash_wrap/rom_addr_12_11 )
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/rom_addr_12_s5 .INIT=8'h80;
+DFFC \Gowin_EMPU_inst/u_flash_wrap/bus_cnt_0_s0  (
+	.D(\Gowin_EMPU_inst/u_flash_wrap/n77_4 ),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/n100_6 ),
+	.Q(\Gowin_EMPU_inst/u_flash_wrap/bus_cnt [0])
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/bus_cnt_0_s0 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_flash_wrap/haddr_1d_12_s0  (
+	.D(\Gowin_EMPU_inst/targflash0_haddr [14]),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/n100_6 ),
+	.Q(\Gowin_EMPU_inst/u_flash_wrap/haddr_1d [12])
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/haddr_1d_12_s0 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_flash_wrap/haddr_1d_11_s0  (
+	.D(\Gowin_EMPU_inst/targflash0_haddr [13]),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/n100_6 ),
+	.Q(\Gowin_EMPU_inst/u_flash_wrap/haddr_1d [11])
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/haddr_1d_11_s0 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_flash_wrap/haddr_1d_10_s0  (
+	.D(\Gowin_EMPU_inst/targflash0_haddr [12]),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/n100_6 ),
+	.Q(\Gowin_EMPU_inst/u_flash_wrap/haddr_1d [10])
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/haddr_1d_10_s0 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_flash_wrap/haddr_1d_9_s0  (
+	.D(\Gowin_EMPU_inst/targflash0_haddr [11]),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/n100_6 ),
+	.Q(\Gowin_EMPU_inst/u_flash_wrap/haddr_1d [9])
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/haddr_1d_9_s0 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_flash_wrap/haddr_1d_8_s0  (
+	.D(\Gowin_EMPU_inst/targflash0_haddr [10]),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/n100_6 ),
+	.Q(\Gowin_EMPU_inst/u_flash_wrap/haddr_1d [8])
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/haddr_1d_8_s0 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_flash_wrap/haddr_1d_7_s0  (
+	.D(\Gowin_EMPU_inst/targflash0_haddr [9]),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/n100_6 ),
+	.Q(\Gowin_EMPU_inst/u_flash_wrap/haddr_1d [7])
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/haddr_1d_7_s0 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_flash_wrap/haddr_1d_6_s0  (
+	.D(\Gowin_EMPU_inst/targflash0_haddr [8]),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/n100_6 ),
+	.Q(\Gowin_EMPU_inst/u_flash_wrap/haddr_1d [6])
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/haddr_1d_6_s0 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_flash_wrap/haddr_1d_5_s0  (
+	.D(\Gowin_EMPU_inst/targflash0_haddr [7]),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/n100_6 ),
+	.Q(\Gowin_EMPU_inst/u_flash_wrap/haddr_1d [5])
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/haddr_1d_5_s0 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_flash_wrap/haddr_1d_4_s0  (
+	.D(\Gowin_EMPU_inst/targflash0_haddr [6]),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/n100_6 ),
+	.Q(\Gowin_EMPU_inst/u_flash_wrap/haddr_1d [4])
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/haddr_1d_4_s0 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_flash_wrap/haddr_1d_3_s0  (
+	.D(\Gowin_EMPU_inst/targflash0_haddr [5]),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/n100_6 ),
+	.Q(\Gowin_EMPU_inst/u_flash_wrap/haddr_1d [3])
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/haddr_1d_3_s0 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_flash_wrap/haddr_1d_2_s0  (
+	.D(\Gowin_EMPU_inst/targflash0_haddr [4]),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/n100_6 ),
+	.Q(\Gowin_EMPU_inst/u_flash_wrap/haddr_1d [2])
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/haddr_1d_2_s0 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_flash_wrap/haddr_1d_1_s0  (
+	.D(\Gowin_EMPU_inst/targflash0_haddr [3]),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/n100_6 ),
+	.Q(\Gowin_EMPU_inst/u_flash_wrap/haddr_1d [1])
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/haddr_1d_1_s0 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_flash_wrap/haddr_1d_0_s0  (
+	.D(\Gowin_EMPU_inst/targflash0_haddr [2]),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/n100_6 ),
+	.Q(\Gowin_EMPU_inst/u_flash_wrap/haddr_1d [0])
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/haddr_1d_0_s0 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_flash_wrap/hsel_1d_s0  (
+	.D(\Gowin_EMPU_inst/targflash0_hsel ),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/n100_6 ),
+	.Q(\Gowin_EMPU_inst/u_flash_wrap/hsel_1d )
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/hsel_1d_s0 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_flash_wrap/htrans_1d_1_s0  (
+	.D(\Gowin_EMPU_inst/targflash0_htrans [1]),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/n100_6 ),
+	.Q(\Gowin_EMPU_inst/u_flash_wrap/htrans_1d [1])
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/htrans_1d_1_s0 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_flash_wrap/hready_out_1d_s0  (
+	.D(\Gowin_EMPU_inst/targflash0_readyout ),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/n100_6 ),
+	.Q(\Gowin_EMPU_inst/u_flash_wrap/hready_out_1d )
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/hready_out_1d_s0 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_flash_wrap/se_out_s0  (
+	.D(\Gowin_EMPU_inst/u_flash_wrap/n214_5 ),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/n100_6 ),
+	.Q(\Gowin_EMPU_inst/u_flash_wrap/se_out )
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/se_out_s0 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_flash_wrap/bus_cnt_1_s0  (
+	.D(\Gowin_EMPU_inst/u_flash_wrap/n76_5 ),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/n100_6 ),
+	.Q(\Gowin_EMPU_inst/u_flash_wrap/bus_cnt [1])
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/bus_cnt_1_s0 .INIT=1'b0;
+DFFPE \Gowin_EMPU_inst/u_flash_wrap/hready_out_s1  (
+	.D(\Gowin_EMPU_inst/u_flash_wrap/n95_5 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_flash_wrap/hready_out_6 ),
+	.PRESET(\Gowin_EMPU_inst/n100_6 ),
+	.Q(\Gowin_EMPU_inst/targflash0_readyout )
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/hready_out_s1 .INIT=1'b1;
+DFFNCE \Gowin_EMPU_inst/u_flash_wrap/rom_addr_12_s3  (
+	.D(\Gowin_EMPU_inst/u_flash_wrap/n145_3 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_flash_wrap/rom_addr_12_10 ),
+	.CLEAR(\Gowin_EMPU_inst/n100_6 ),
+	.Q(\Gowin_EMPU_inst/u_flash_wrap/rom_addr [12])
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/rom_addr_12_s3 .INIT=1'b0;
+DFFNCE \Gowin_EMPU_inst/u_flash_wrap/rom_addr_11_s3  (
+	.D(\Gowin_EMPU_inst/u_flash_wrap/n146_3 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_flash_wrap/rom_addr_12_10 ),
+	.CLEAR(\Gowin_EMPU_inst/n100_6 ),
+	.Q(\Gowin_EMPU_inst/u_flash_wrap/rom_addr [11])
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/rom_addr_11_s3 .INIT=1'b0;
+DFFNCE \Gowin_EMPU_inst/u_flash_wrap/rom_addr_10_s3  (
+	.D(\Gowin_EMPU_inst/u_flash_wrap/n147_3 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_flash_wrap/rom_addr_12_10 ),
+	.CLEAR(\Gowin_EMPU_inst/n100_6 ),
+	.Q(\Gowin_EMPU_inst/u_flash_wrap/rom_addr [10])
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/rom_addr_10_s3 .INIT=1'b0;
+DFFNCE \Gowin_EMPU_inst/u_flash_wrap/rom_addr_9_s3  (
+	.D(\Gowin_EMPU_inst/u_flash_wrap/n148_3 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_flash_wrap/rom_addr_12_10 ),
+	.CLEAR(\Gowin_EMPU_inst/n100_6 ),
+	.Q(\Gowin_EMPU_inst/u_flash_wrap/rom_addr [9])
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/rom_addr_9_s3 .INIT=1'b0;
+DFFNCE \Gowin_EMPU_inst/u_flash_wrap/rom_addr_8_s3  (
+	.D(\Gowin_EMPU_inst/u_flash_wrap/n149_3 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_flash_wrap/rom_addr_12_10 ),
+	.CLEAR(\Gowin_EMPU_inst/n100_6 ),
+	.Q(\Gowin_EMPU_inst/u_flash_wrap/rom_addr [8])
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/rom_addr_8_s3 .INIT=1'b0;
+DFFNCE \Gowin_EMPU_inst/u_flash_wrap/rom_addr_7_s3  (
+	.D(\Gowin_EMPU_inst/u_flash_wrap/n150_3 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_flash_wrap/rom_addr_12_10 ),
+	.CLEAR(\Gowin_EMPU_inst/n100_6 ),
+	.Q(\Gowin_EMPU_inst/u_flash_wrap/rom_addr [7])
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/rom_addr_7_s3 .INIT=1'b0;
+DFFNCE \Gowin_EMPU_inst/u_flash_wrap/rom_addr_6_s3  (
+	.D(\Gowin_EMPU_inst/u_flash_wrap/n151_3 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_flash_wrap/rom_addr_12_10 ),
+	.CLEAR(\Gowin_EMPU_inst/n100_6 ),
+	.Q(\Gowin_EMPU_inst/u_flash_wrap/rom_addr [6])
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/rom_addr_6_s3 .INIT=1'b0;
+DFFNCE \Gowin_EMPU_inst/u_flash_wrap/rom_addr_5_s3  (
+	.D(\Gowin_EMPU_inst/u_flash_wrap/n152_3 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_flash_wrap/rom_addr_12_10 ),
+	.CLEAR(\Gowin_EMPU_inst/n100_6 ),
+	.Q(\Gowin_EMPU_inst/u_flash_wrap/rom_addr [5])
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/rom_addr_5_s3 .INIT=1'b0;
+DFFNCE \Gowin_EMPU_inst/u_flash_wrap/rom_addr_4_s3  (
+	.D(\Gowin_EMPU_inst/u_flash_wrap/n153_3 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_flash_wrap/rom_addr_12_10 ),
+	.CLEAR(\Gowin_EMPU_inst/n100_6 ),
+	.Q(\Gowin_EMPU_inst/u_flash_wrap/rom_addr [4])
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/rom_addr_4_s3 .INIT=1'b0;
+DFFNCE \Gowin_EMPU_inst/u_flash_wrap/rom_addr_3_s3  (
+	.D(\Gowin_EMPU_inst/u_flash_wrap/n154_3 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_flash_wrap/rom_addr_12_10 ),
+	.CLEAR(\Gowin_EMPU_inst/n100_6 ),
+	.Q(\Gowin_EMPU_inst/u_flash_wrap/rom_addr [3])
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/rom_addr_3_s3 .INIT=1'b0;
+DFFNCE \Gowin_EMPU_inst/u_flash_wrap/rom_addr_2_s3  (
+	.D(\Gowin_EMPU_inst/u_flash_wrap/n155_3 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_flash_wrap/rom_addr_12_10 ),
+	.CLEAR(\Gowin_EMPU_inst/n100_6 ),
+	.Q(\Gowin_EMPU_inst/u_flash_wrap/rom_addr [2])
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/rom_addr_2_s3 .INIT=1'b0;
+DFFNCE \Gowin_EMPU_inst/u_flash_wrap/rom_addr_1_s3  (
+	.D(\Gowin_EMPU_inst/u_flash_wrap/n156_3 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_flash_wrap/rom_addr_12_10 ),
+	.CLEAR(\Gowin_EMPU_inst/n100_6 ),
+	.Q(\Gowin_EMPU_inst/u_flash_wrap/rom_addr [1])
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/rom_addr_1_s3 .INIT=1'b0;
+DFFNCE \Gowin_EMPU_inst/u_flash_wrap/rom_addr_0_s3  (
+	.D(\Gowin_EMPU_inst/u_flash_wrap/n157_3 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_flash_wrap/rom_addr_12_10 ),
+	.CLEAR(\Gowin_EMPU_inst/n100_6 ),
+	.Q(\Gowin_EMPU_inst/u_flash_wrap/rom_addr [0])
+);
+defparam \Gowin_EMPU_inst/u_flash_wrap/rom_addr_0_s3 .INIT=1'b0;
+INV \Gowin_EMPU_inst/u_flash_wrap/n100_s2  (
+	.I(\Gowin_EMPU_inst/ye ),
+	.O(\Gowin_EMPU_inst/n100_6 )
+);
+FLASH256K \Gowin_EMPU_inst/u_flash_wrap/u_flash/flash_inst  (
+	.XE(\Gowin_EMPU_inst/ye ),
+	.YE(\Gowin_EMPU_inst/ye ),
+	.SE(\Gowin_EMPU_inst/u_flash_wrap/se_out ),
+	.PROG(GND),
+	.ERASE(GND),
+	.NVSTR(GND),
+	.XADR({\Gowin_EMPU_inst/u_flash_wrap/rom_addr [12:6]}),
+	.YADR({\Gowin_EMPU_inst/u_flash_wrap/rom_addr [5:0]}),
+	.DIN({GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND}),
+	.DOUT({\Gowin_EMPU_inst/targflash0_hrdata [31:0]})
+);
+SP \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_00  (
+	.CLK(sys_clk),
+	.OCE(VCC),
+	.CE(VCC),
+	.RESET(\Gowin_EMPU_inst/n100_6 ),
+	.WRE(\Gowin_EMPU_inst/sram0_wren [0]),
+	.BLKSEL({\Gowin_EMPU_inst/sram0_cs , \Gowin_EMPU_inst/sram0_cs , \Gowin_EMPU_inst/sram0_cs }),
+	.DI({GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, \Gowin_EMPU_inst/sram0_wdata [3:0]}),
+	.AD({\Gowin_EMPU_inst/sram0_addr [11:0], GND, GND}),
+	.DO({\Gowin_EMPU_inst/u_sram_subsystem/DO [31:4], \Gowin_EMPU_inst/sram0_rdata [3:0]})
+);
+defparam \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_00 .READ_MODE=1'b0;
+defparam \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_00 .WRITE_MODE=2'b00;
+defparam \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_00 .BLK_SEL=3'b111;
+defparam \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_00 .BIT_WIDTH=4;
+defparam \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_00 .RESET_MODE="SYNC";
+SP \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_01  (
+	.CLK(sys_clk),
+	.OCE(VCC),
+	.CE(VCC),
+	.RESET(\Gowin_EMPU_inst/n100_6 ),
+	.WRE(\Gowin_EMPU_inst/sram0_wren [0]),
+	.BLKSEL({\Gowin_EMPU_inst/sram0_cs , \Gowin_EMPU_inst/sram0_cs , \Gowin_EMPU_inst/sram0_cs }),
+	.DI({GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, \Gowin_EMPU_inst/sram0_wdata [7:4]}),
+	.AD({\Gowin_EMPU_inst/sram0_addr [11:0], GND, GND}),
+	.DO({\Gowin_EMPU_inst/u_sram_subsystem/DO_0 [31:4], \Gowin_EMPU_inst/sram0_rdata [7:4]})
+);
+defparam \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_01 .READ_MODE=1'b0;
+defparam \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_01 .WRITE_MODE=2'b00;
+defparam \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_01 .BLK_SEL=3'b111;
+defparam \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_01 .BIT_WIDTH=4;
+defparam \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_01 .RESET_MODE="SYNC";
+SP \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_10  (
+	.CLK(sys_clk),
+	.OCE(VCC),
+	.CE(VCC),
+	.RESET(GND),
+	.WRE(\Gowin_EMPU_inst/sram0_wren [1]),
+	.BLKSEL({\Gowin_EMPU_inst/sram0_cs , \Gowin_EMPU_inst/sram0_cs , \Gowin_EMPU_inst/sram0_cs }),
+	.DI({GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, \Gowin_EMPU_inst/sram0_wdata [11:8]}),
+	.AD({\Gowin_EMPU_inst/sram0_addr [11:0], GND, GND}),
+	.DO({\Gowin_EMPU_inst/u_sram_subsystem/DO_1 [31:4], \Gowin_EMPU_inst/sram0_rdata [11:8]})
+);
+defparam \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_10 .READ_MODE=1'b0;
+defparam \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_10 .WRITE_MODE=2'b00;
+defparam \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_10 .BLK_SEL=3'b111;
+defparam \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_10 .BIT_WIDTH=4;
+defparam \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_10 .RESET_MODE="SYNC";
+SP \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_11  (
+	.CLK(sys_clk),
+	.OCE(VCC),
+	.CE(VCC),
+	.RESET(GND),
+	.WRE(\Gowin_EMPU_inst/sram0_wren [1]),
+	.BLKSEL({\Gowin_EMPU_inst/sram0_cs , \Gowin_EMPU_inst/sram0_cs , \Gowin_EMPU_inst/sram0_cs }),
+	.DI({GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, \Gowin_EMPU_inst/sram0_wdata [15:12]}),
+	.AD({\Gowin_EMPU_inst/sram0_addr [11:0], GND, GND}),
+	.DO({\Gowin_EMPU_inst/u_sram_subsystem/DO_2 [31:4], \Gowin_EMPU_inst/sram0_rdata [15:12]})
+);
+defparam \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_11 .READ_MODE=1'b0;
+defparam \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_11 .WRITE_MODE=2'b00;
+defparam \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_11 .BLK_SEL=3'b111;
+defparam \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_11 .BIT_WIDTH=4;
+defparam \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_11 .RESET_MODE="SYNC";
+SP \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_20  (
+	.CLK(sys_clk),
+	.OCE(VCC),
+	.CE(VCC),
+	.RESET(GND),
+	.WRE(\Gowin_EMPU_inst/sram0_wren [2]),
+	.BLKSEL({\Gowin_EMPU_inst/sram0_cs , \Gowin_EMPU_inst/sram0_cs , \Gowin_EMPU_inst/sram0_cs }),
+	.DI({GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, \Gowin_EMPU_inst/sram0_wdata [19:16]}),
+	.AD({\Gowin_EMPU_inst/sram0_addr [11:0], GND, GND}),
+	.DO({\Gowin_EMPU_inst/u_sram_subsystem/DO_3 [31:4], \Gowin_EMPU_inst/sram0_rdata [19:16]})
+);
+defparam \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_20 .READ_MODE=1'b0;
+defparam \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_20 .WRITE_MODE=2'b00;
+defparam \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_20 .BLK_SEL=3'b111;
+defparam \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_20 .BIT_WIDTH=4;
+defparam \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_20 .RESET_MODE="SYNC";
+SP \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_21  (
+	.CLK(sys_clk),
+	.OCE(VCC),
+	.CE(VCC),
+	.RESET(GND),
+	.WRE(\Gowin_EMPU_inst/sram0_wren [2]),
+	.BLKSEL({\Gowin_EMPU_inst/sram0_cs , \Gowin_EMPU_inst/sram0_cs , \Gowin_EMPU_inst/sram0_cs }),
+	.DI({GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, \Gowin_EMPU_inst/sram0_wdata [23:20]}),
+	.AD({\Gowin_EMPU_inst/sram0_addr [11:0], GND, GND}),
+	.DO({\Gowin_EMPU_inst/u_sram_subsystem/DO_4 [31:4], \Gowin_EMPU_inst/sram0_rdata [23:20]})
+);
+defparam \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_21 .READ_MODE=1'b0;
+defparam \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_21 .WRITE_MODE=2'b00;
+defparam \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_21 .BLK_SEL=3'b111;
+defparam \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_21 .BIT_WIDTH=4;
+defparam \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_21 .RESET_MODE="SYNC";
+SP \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_30  (
+	.CLK(sys_clk),
+	.OCE(VCC),
+	.CE(VCC),
+	.RESET(GND),
+	.WRE(\Gowin_EMPU_inst/sram0_wren [3]),
+	.BLKSEL({\Gowin_EMPU_inst/sram0_cs , \Gowin_EMPU_inst/sram0_cs , \Gowin_EMPU_inst/sram0_cs }),
+	.DI({GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, \Gowin_EMPU_inst/sram0_wdata [27:24]}),
+	.AD({\Gowin_EMPU_inst/sram0_addr [11:0], GND, GND}),
+	.DO({\Gowin_EMPU_inst/u_sram_subsystem/DO_5 [31:4], \Gowin_EMPU_inst/sram0_rdata [27:24]})
+);
+defparam \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_30 .READ_MODE=1'b0;
+defparam \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_30 .WRITE_MODE=2'b00;
+defparam \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_30 .BLK_SEL=3'b111;
+defparam \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_30 .BIT_WIDTH=4;
+defparam \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_30 .RESET_MODE="SYNC";
+SP \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_31  (
+	.CLK(sys_clk),
+	.OCE(VCC),
+	.CE(VCC),
+	.RESET(GND),
+	.WRE(\Gowin_EMPU_inst/sram0_wren [3]),
+	.BLKSEL({\Gowin_EMPU_inst/sram0_cs , \Gowin_EMPU_inst/sram0_cs , \Gowin_EMPU_inst/sram0_cs }),
+	.DI({GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, GND, \Gowin_EMPU_inst/sram0_wdata [31:28]}),
+	.AD({\Gowin_EMPU_inst/sram0_addr [11:0], GND, GND}),
+	.DO({\Gowin_EMPU_inst/u_sram_subsystem/DO_6 [31:4], \Gowin_EMPU_inst/sram0_rdata [31:28]})
+);
+defparam \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_31 .READ_MODE=1'b0;
+defparam \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_31 .WRITE_MODE=2'b00;
+defparam \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_31 .BLK_SEL=3'b111;
+defparam \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_31 .BIT_WIDTH=4;
+defparam \Gowin_EMPU_inst/u_sram_subsystem/bram_sp_31 .RESET_MODE="SYNC";
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_slave_mux/apbtargexp2_pready_s  (
+	.I0(\Gowin_EMPU_inst/apbtargexp2_paddr [11]),
+	.I1(\Gowin_EMPU_inst/apbtargexp2_paddr [10]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_slave_mux/apbtargexp2_pready_15 ),
+	.I3(\Gowin_EMPU_inst/apbtargexp2_psel ),
+	.F(\Gowin_EMPU_inst/apbtargexp2_pready )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_slave_mux/apbtargexp2_pready_s .INIT=16'h01FF;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_slave_mux/apbtargexp2_pready_s0  (
+	.I0(\Gowin_EMPU_inst/apbtargexp2_penable ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/SPI_ACK_O ),
+	.I2(\Gowin_EMPU_inst/apbtargexp2_paddr [8]),
+	.I3(\Gowin_EMPU_inst/apbtargexp2_paddr [9]),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_slave_mux/apbtargexp2_pready_15 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_slave_mux/apbtargexp2_pready_s0 .INIT=16'h0700;
+LUT3 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_slave_mux/apbtargexp2_prdata_0_s0  (
+	.I0(\Gowin_EMPU_inst/apbtargexp2_paddr [8]),
+	.I1(\Gowin_EMPU_inst/apbtargexp2_paddr [9]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/apbtargexp2_prdata_0_6 ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/apbtargexp2_prdata_0_5 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_slave_mux/apbtargexp2_prdata_0_s0 .INIT=8'h40;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_slave_mux/apbtargexp2_prdata_0_s1  (
+	.I0(\Gowin_EMPU_inst/apbtargexp2_paddr [10]),
+	.I1(\Gowin_EMPU_inst/apbtargexp2_paddr [11]),
+	.I2(\Gowin_EMPU_inst/apbtargexp2_psel ),
+	.I3(\Gowin_EMPU_inst/apbtargexp2_penable ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/apbtargexp2_prdata_0_6 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_slave_mux/apbtargexp2_prdata_0_s1 .INIT=16'h1000;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_slave_mux/apbtargexp2_prdata_12_s0  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/SPI_DAT_O [12]),
+	.I1(\Gowin_EMPU_inst/apbtargexp2_paddr [8]),
+	.I2(\Gowin_EMPU_inst/apbtargexp2_paddr [9]),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/apbtargexp2_prdata_0_6 ),
+	.F(\Gowin_EMPU_inst/apbtargexp2_prdata [12])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_slave_mux/apbtargexp2_prdata_12_s0 .INIT=16'h2000;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_slave_mux/apbtargexp2_prdata_10_s0  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/SPI_DAT_O [10]),
+	.I1(\Gowin_EMPU_inst/apbtargexp2_paddr [8]),
+	.I2(\Gowin_EMPU_inst/apbtargexp2_paddr [9]),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/apbtargexp2_prdata_0_6 ),
+	.F(\Gowin_EMPU_inst/apbtargexp2_prdata [10])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_slave_mux/apbtargexp2_prdata_10_s0 .INIT=16'h2000;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_slave_mux/apbtargexp2_prdata_9_s0  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/SPI_DAT_O [9]),
+	.I1(\Gowin_EMPU_inst/apbtargexp2_paddr [8]),
+	.I2(\Gowin_EMPU_inst/apbtargexp2_paddr [9]),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/apbtargexp2_prdata_0_6 ),
+	.F(\Gowin_EMPU_inst/apbtargexp2_prdata [9])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_slave_mux/apbtargexp2_prdata_9_s0 .INIT=16'h2000;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_slave_mux/apbtargexp2_prdata_8_s0  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/SPI_DAT_O [8]),
+	.I1(\Gowin_EMPU_inst/apbtargexp2_paddr [8]),
+	.I2(\Gowin_EMPU_inst/apbtargexp2_paddr [9]),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/apbtargexp2_prdata_0_6 ),
+	.F(\Gowin_EMPU_inst/apbtargexp2_prdata [8])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_slave_mux/apbtargexp2_prdata_8_s0 .INIT=16'h2000;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_slave_mux/apbtargexp2_prdata_7_s0  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/SPI_DAT_O [7]),
+	.I1(\Gowin_EMPU_inst/apbtargexp2_paddr [8]),
+	.I2(\Gowin_EMPU_inst/apbtargexp2_paddr [9]),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/apbtargexp2_prdata_0_6 ),
+	.F(\Gowin_EMPU_inst/apbtargexp2_prdata [7])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_slave_mux/apbtargexp2_prdata_7_s0 .INIT=16'h2000;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_slave_mux/apbtargexp2_prdata_6_s0  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/SPI_DAT_O [6]),
+	.I1(\Gowin_EMPU_inst/apbtargexp2_paddr [8]),
+	.I2(\Gowin_EMPU_inst/apbtargexp2_paddr [9]),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/apbtargexp2_prdata_0_6 ),
+	.F(\Gowin_EMPU_inst/apbtargexp2_prdata [6])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_slave_mux/apbtargexp2_prdata_6_s0 .INIT=16'h2000;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_slave_mux/apbtargexp2_prdata_5_s0  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/SPI_DAT_O [5]),
+	.I1(\Gowin_EMPU_inst/apbtargexp2_paddr [8]),
+	.I2(\Gowin_EMPU_inst/apbtargexp2_paddr [9]),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/apbtargexp2_prdata_0_6 ),
+	.F(\Gowin_EMPU_inst/apbtargexp2_prdata [5])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_slave_mux/apbtargexp2_prdata_5_s0 .INIT=16'h2000;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_slave_mux/apbtargexp2_prdata_4_s0  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/SPI_DAT_O [4]),
+	.I1(\Gowin_EMPU_inst/apbtargexp2_paddr [8]),
+	.I2(\Gowin_EMPU_inst/apbtargexp2_paddr [9]),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/apbtargexp2_prdata_0_6 ),
+	.F(\Gowin_EMPU_inst/apbtargexp2_prdata [4])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_slave_mux/apbtargexp2_prdata_4_s0 .INIT=16'h2000;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_slave_mux/apbtargexp2_prdata_3_s0  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/SPI_DAT_O [3]),
+	.I1(\Gowin_EMPU_inst/apbtargexp2_paddr [8]),
+	.I2(\Gowin_EMPU_inst/apbtargexp2_paddr [9]),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/apbtargexp2_prdata_0_6 ),
+	.F(\Gowin_EMPU_inst/apbtargexp2_prdata [3])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_slave_mux/apbtargexp2_prdata_3_s0 .INIT=16'h2000;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_slave_mux/apbtargexp2_prdata_2_s0  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/SPI_DAT_O [2]),
+	.I1(\Gowin_EMPU_inst/apbtargexp2_paddr [8]),
+	.I2(\Gowin_EMPU_inst/apbtargexp2_paddr [9]),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/apbtargexp2_prdata_0_6 ),
+	.F(\Gowin_EMPU_inst/apbtargexp2_prdata [2])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_slave_mux/apbtargexp2_prdata_2_s0 .INIT=16'h2000;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_slave_mux/apbtargexp2_prdata_1_s0  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/SPI_DAT_O [1]),
+	.I1(\Gowin_EMPU_inst/apbtargexp2_paddr [8]),
+	.I2(\Gowin_EMPU_inst/apbtargexp2_paddr [9]),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/apbtargexp2_prdata_0_6 ),
+	.F(\Gowin_EMPU_inst/apbtargexp2_prdata [1])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_slave_mux/apbtargexp2_prdata_1_s0 .INIT=16'h2000;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_slave_mux/apbtargexp2_prdata_0_s2  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/SPI_DAT_O [0]),
+	.I1(\Gowin_EMPU_inst/apbtargexp2_paddr [8]),
+	.I2(\Gowin_EMPU_inst/apbtargexp2_paddr [9]),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/apbtargexp2_prdata_0_6 ),
+	.F(\Gowin_EMPU_inst/apbtargexp2_prdata [0])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_slave_mux/apbtargexp2_prdata_0_s2 .INIT=16'h2000;
+LUT3 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n88_s0  (
+	.I0(\Gowin_EMPU_inst/apbtargexp2_paddr [4]),
+	.I1(\Gowin_EMPU_inst/apbtargexp2_paddr [5]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n88_4 ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n88_3 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n88_s0 .INIT=8'h10;
+LUT3 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n90_s0  (
+	.I0(\Gowin_EMPU_inst/apbtargexp2_paddr [3]),
+	.I1(\Gowin_EMPU_inst/apbtargexp2_paddr [2]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n90_4 ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n90_3 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n90_s0 .INIT=8'h40;
+LUT3 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n92_s0  (
+	.I0(\Gowin_EMPU_inst/apbtargexp2_paddr [2]),
+	.I1(\Gowin_EMPU_inst/apbtargexp2_paddr [3]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n90_4 ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n92_3 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n92_s0 .INIT=8'h40;
+LUT3 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n95_s0  (
+	.I0(\Gowin_EMPU_inst/apbtargexp2_paddr [2]),
+	.I1(\Gowin_EMPU_inst/apbtargexp2_paddr [3]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n90_4 ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n95_3 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n95_s0 .INIT=8'h80;
+LUT3 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n97_s0  (
+	.I0(\Gowin_EMPU_inst/apbtargexp2_paddr [5]),
+	.I1(\Gowin_EMPU_inst/apbtargexp2_paddr [4]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n88_4 ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n97_3 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n97_s0 .INIT=8'h40;
+LUT2 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n162_s0  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_wr ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw04_cs ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n162_3 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n162_s0 .INIT=4'h8;
+LUT2 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n190_s0  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_wr ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw10_cs ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n190_3 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n190_s0 .INIT=4'h8;
+LUT3 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n313_s0  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n313_4 ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rxdata [7]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw00_cs ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n313_3 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n313_s0 .INIT=8'hCA;
+LUT3 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n314_s0  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n314_4 ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rxdata [6]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw00_cs ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n314_3 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n314_s0 .INIT=8'hC5;
+LUT3 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n315_s0  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n315_4 ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rxdata [5]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw00_cs ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n315_3 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n315_s0 .INIT=8'hC5;
+LUT3 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n316_s0  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n316_4 ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rxdata [4]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw00_cs ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n316_3 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n316_s0 .INIT=8'hC5;
+LUT3 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n317_s0  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n317_4 ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rxdata [3]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw00_cs ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n317_3 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n317_s0 .INIT=8'hC5;
+LUT3 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n318_s0  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n318_4 ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rxdata [2]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw00_cs ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n318_3 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n318_s0 .INIT=8'hC5;
+LUT3 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n319_s0  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n319_4 ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_cpha ),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n319_5 ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n319_3 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n319_s0 .INIT=8'h8F;
+LUT3 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n320_s0  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n320_4 ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rxdata [0]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw00_cs ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n320_3 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n320_s0 .INIT=8'hC5;
+LUT2 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n386_s0  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_wr ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw0c_cs ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n386_3 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n386_s0 .INIT=4'h8;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n416_s1  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/SCLK_Z ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_cpol ),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n416_7 ),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n416_8 ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n416_4 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n416_s1 .INIT=16'h5CCC;
+LUT3 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n430_s0  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data [7]),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data [5]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_dir ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n430_3 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n430_s0 .INIT=8'hAC;
+LUT3 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n431_s0  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data [4]),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data [6]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_dir ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n431_3 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n431_s0 .INIT=8'hCA;
+LUT3 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n432_s0  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data [3]),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data [5]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_dir ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n432_3 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n432_s0 .INIT=8'hCA;
+LUT3 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n433_s0  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data [2]),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data [4]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_dir ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n433_3 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n433_s0 .INIT=8'hCA;
+LUT3 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n434_s0  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data [1]),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data [3]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_dir ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n434_3 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n434_s0 .INIT=8'hCA;
+LUT3 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n435_s0  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data [0]),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data [2]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_dir ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n435_3 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n435_s0 .INIT=8'hCA;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n460_s0  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n_status [2]),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n_status [1]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n_status [0]),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n416_8 ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n460_3 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n460_s0 .INIT=16'hBF00;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n742_s0  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n_status [2]),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n416_8 ),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n_status [0]),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n_status [1]),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n742_3 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n742_s0 .INIT=16'h1000;
+LUT3 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n765_s0  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n765_4 ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rrdy ),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n764_6 ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n765_3 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n765_s0 .INIT=8'hCA;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_s12  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_19 ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n416_8 ),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_20 ),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_21 ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_18 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_s12 .INIT=16'hF4FF;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/pending_data_s3  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status [1]),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status [2]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status [0]),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n162_3 ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/pending_data_8 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/pending_data_s3 .INIT=16'hFF10;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt_5_s3  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_19 ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n416_8 ),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt_5_9 ),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n416_7 ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt_5_8 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt_5_s3 .INIT=16'h8F88;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_toe_s3  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw08_cs ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/SPI_ACK_O ),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_wr ),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n752_5 ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_toe_8 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_toe_s3 .INIT=16'hFF80;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n416_s2  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n416_7 ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status [2]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status [1]),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status [0]),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n416_6 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n416_s2 .INIT=16'h2003;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n538_s13  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_19 ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status [0]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status [2]),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status [1]),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n538_20 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n538_s13 .INIT=16'h070C;
+LUT3 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n615_s1  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt [0]),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n615_6 ),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n615_7 ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n615_5 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n615_s1 .INIT=8'h01;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n614_s1  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n614_6 ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n416_7 ),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n615_6 ),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n614_7 ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n614_5 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n614_s1 .INIT=16'h0700;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n612_s1  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt [2]),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n613_6 ),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n615_7 ),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt [3]),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n612_5 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n612_s1 .INIT=16'h0708;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n611_s1  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt [2]),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt [3]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n613_6 ),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt [4]),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n611_5 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n611_s1 .INIT=16'h7F80;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n610_s1  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt [2]),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt [3]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt [4]),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n613_6 ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n610_5 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n610_s1 .INIT=16'h8000;
+LUT3 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n537_s12  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_19 ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n416_8 ),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_20 ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n537_18 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n537_s12 .INIT=8'hF8;
+LUT2 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n436_s1  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_dir ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data [1]),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n436_5 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n436_s1 .INIT=4'h8;
+LUT2 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n429_s1  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_dir ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data [6]),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n429_5 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n429_s1 .INIT=4'h4;
+LUT2 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n479_s1  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/clock_cnt [0]),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n479_6 ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n479_5 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n479_s1 .INIT=4'h4;
+LUT3 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n478_s1  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/clock_cnt [0]),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/clock_cnt [1]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n479_6 ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n478_5 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n478_s1 .INIT=8'h60;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n477_s1  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/clock_cnt [0]),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/clock_cnt [1]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/clock_cnt [2]),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n479_6 ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n477_5 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n477_s1 .INIT=16'h7800;
+LUT3 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n476_s1  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/clock_cnt [3]),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n476_6 ),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n479_6 ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n476_5 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n476_s1 .INIT=8'h60;
+LUT3 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n475_s1  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/clock_cnt [3]),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n479_6 ),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n476_6 ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n475_5 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n475_s1 .INIT=8'h80;
+LUT2 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n312_s1  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_itrdy ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n319_4 ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n312_5 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n312_s1 .INIT=4'h8;
+LUT2 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n311_s1  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_irrdy ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n319_4 ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n311_5 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n311_s1 .INIT=4'h8;
+LUT2 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n310_s1  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_ie ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n319_4 ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n310_5 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n310_s1 .INIT=4'h8;
+LUT2 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n308_s1  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_sso ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n319_4 ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n308_5 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n308_s1 .INIT=4'h8;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n88_s1  (
+	.I0(\Gowin_EMPU_inst/apbtargexp2_paddr [2]),
+	.I1(\Gowin_EMPU_inst/apbtargexp2_paddr [3]),
+	.I2(\Gowin_EMPU_inst/apbtargexp2_paddr [6]),
+	.I3(\Gowin_EMPU_inst/apbtargexp2_paddr [7]),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n88_4 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n88_s1 .INIT=16'h0001;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n90_s1  (
+	.I0(\Gowin_EMPU_inst/apbtargexp2_paddr [4]),
+	.I1(\Gowin_EMPU_inst/apbtargexp2_paddr [5]),
+	.I2(\Gowin_EMPU_inst/apbtargexp2_paddr [6]),
+	.I3(\Gowin_EMPU_inst/apbtargexp2_paddr [7]),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n90_4 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n90_s1 .INIT=16'h0001;
+LUT3 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n313_s1  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n313_5 ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_txdata [7]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw04_cs ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n313_4 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n313_s1 .INIT=8'hCA;
+LUT3 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n314_s1  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n314_5 ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_txdata [6]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw04_cs ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n314_4 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n314_s1 .INIT=8'h3A;
+LUT3 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n315_s1  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n315_5 ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_txdata [5]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw04_cs ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n315_4 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n315_s1 .INIT=8'h3A;
+LUT3 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n316_s1  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n316_5 ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_txdata [4]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw04_cs ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n316_4 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n316_s1 .INIT=8'h3A;
+LUT3 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n317_s1  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n317_5 ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_txdata [3]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw04_cs ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n317_4 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n317_s1 .INIT=8'h3A;
+LUT3 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n318_s1  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n318_5 ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_txdata [2]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw04_cs ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n318_4 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n318_s1 .INIT=8'h3A;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n319_s1  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw00_cs ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw04_cs ),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw08_cs ),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n319_6 ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n319_4 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n319_s1 .INIT=16'h0100;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n319_s2  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw04_cs ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_txdata [1]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rxdata [1]),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw00_cs ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n319_5 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n319_s2 .INIT=16'h0F77;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n320_s1  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw08_cs ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n320_5 ),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_txdata [0]),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw04_cs ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n320_4 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n320_s1 .INIT=16'h0FEE;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n416_s3  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/clock_cnt [2]),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/clock_cnt [3]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/clock_cnt [4]),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n416_9 ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n416_7 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n416_s3 .INIT=16'h0100;
+LUT3 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n416_s4  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status [2]),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status [1]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status [0]),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n416_8 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n416_s4 .INIT=8'h40;
+LUT2 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n428_s1  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/SCLK_Z ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_cpha ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n428_4 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n428_s1 .INIT=4'h6;
+LUT2 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n764_s1  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status [0]),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status [1]),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n764_4 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n764_s1 .INIT=4'h1;
+LUT3 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n765_s1  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw00_cs ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/SPI_ACK_O ),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rd ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n765_4 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n765_s1 .INIT=8'h80;
+LUT3 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_s13  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_22 ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_23 ),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n416_7 ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_19 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_s13 .INIT=8'h40;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_s14  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_24 ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n416_7 ),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status [1]),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status [2]),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_20 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_s14 .INIT=16'h0700;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_s15  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n416_7 ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n614_6 ),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/pending_data ),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n764_4 ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_21 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_s15 .INIT=16'h0777;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt_5_s4  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n428_4 ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status [0]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status [2]),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status [1]),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt_5_9 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt_5_s4 .INIT=16'hF43F;
+LUT3 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n615_s2  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n416_7 ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n615_8 ),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n615_9 ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n615_6 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n615_s2 .INIT=8'h80;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n615_s3  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_22 ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n416_8 ),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_23 ),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n416_7 ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n615_7 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n615_s3 .INIT=16'h4000;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n614_s2  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status [2]),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status [1]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n615_8 ),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n614_8 ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n614_6 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n614_s2 .INIT=16'h4000;
+LUT2 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n614_s3  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt [0]),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt [1]),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n614_7 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n614_s3 .INIT=4'h6;
+LUT2 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n613_s2  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt [0]),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt [1]),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n613_6 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n613_s2 .INIT=4'h8;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n479_s2  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n_status [1]),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n_status [2]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n_status [0]),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n416_7 ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n479_6 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n479_s2 .INIT=16'h00FE;
+LUT3 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n476_s2  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/clock_cnt [0]),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/clock_cnt [1]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/clock_cnt [2]),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n476_6 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n476_s2 .INIT=8'h80;
+LUT3 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n313_s2  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_roe ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_toe ),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw08_cs ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n313_5 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n313_s2 .INIT=8'hE0;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n314_s2  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_itoe ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n319_6 ),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rrdy ),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw08_cs ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n314_5 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n314_s2 .INIT=16'h0F77;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n315_s2  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_iroe ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n319_6 ),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_trdy ),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw08_cs ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n315_5 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n315_s2 .INIT=16'h0F77;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n316_s2  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_clksel [1]),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n319_6 ),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_tmt ),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw08_cs ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n316_5 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n316_s2 .INIT=16'h0F77;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n317_s2  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_clksel [0]),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n319_6 ),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_toe ),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw08_cs ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n317_5 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n317_s2 .INIT=16'h0F77;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n318_s2  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_cpol ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n319_6 ),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_roe ),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw08_cs ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n318_5 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n318_s2 .INIT=16'h0F77;
+LUT2 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n319_s3  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw0c_cs ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw10_cs ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n319_6 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n319_s3 .INIT=4'h4;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n320_s2  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw10_cs ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_dir ),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_ssmask [0]),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw0c_cs ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n320_5 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n320_s2 .INIT=16'h0F77;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n416_s5  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/clock_cnt [0]),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_clksel [0]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/clock_cnt [1]),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_clksel [1]),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n416_9 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n416_s5 .INIT=16'h9009;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_s16  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_25 ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_26 ),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt [1]),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt [0]),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_22 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_s16 .INIT=16'h3FF5;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_s17  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt [4]),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt [5]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_cpol ),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/SCLK_Z ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_23 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_s17 .INIT=16'h0110;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_s18  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt [0]),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status [0]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt [1]),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n615_8 ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_24 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_s18 .INIT=16'h4000;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n615_s4  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt [2]),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt [3]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt [4]),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt [5]),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n615_8 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n615_s4 .INIT=16'h0001;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n615_s5  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status [1]),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status [0]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status [2]),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt [1]),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n615_9 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n615_s5 .INIT=16'h4000;
+LUT3 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n614_s4  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status [0]),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt [1]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt [0]),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n614_8 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n614_s4 .INIT=8'h10;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_s19  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt [2]),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_cpol ),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_cpha ),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt [3]),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_25 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_s19 .INIT=16'h1400;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_s20  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt [3]),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_cpha ),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_cpol ),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt [2]),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_26 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_s20 .INIT=16'h4100;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n428_s2  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n416_7 ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n416_8 ),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/SCLK_Z ),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_cpha ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n428_6 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n428_s2 .INIT=16'h8008;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rrdy_s4  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n764_6 ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw00_cs ),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/SPI_ACK_O ),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rd ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rrdy_10 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rrdy_s4 .INIT=16'hEAAA;
+LUT3 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n613_s3  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt [2]),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt [0]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt [1]),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n613_8 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n613_s3 .INIT=8'h6A;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n_status_1_s4  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n416_7 ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status [2]),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status [0]),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status [1]),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n_status_1_11 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n_status_1_s4 .INIT=16'hFFFB;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n778_s2  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status [2]),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/pending_data ),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status [0]),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status [1]),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n778_7 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n778_s2 .INIT=16'h0001;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n764_s2  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status [2]),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n416_7 ),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status [0]),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status [1]),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n764_6 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n764_s2 .INIT=16'h0008;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_trdy_s4  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_wr ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw04_cs ),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/SPI_ACK_O ),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n742_3 ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_trdy_10 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_trdy_s4 .INIT=16'hFF80;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n752_s1  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_trdy ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/SPI_ACK_O ),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_wr ),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw04_cs ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n752_5 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n752_s1 .INIT=16'h4000;
+LUT3 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n163_s1  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_trdy ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_wr ),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw04_cs ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n163_5 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n163_s1 .INIT=8'h80;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n108_s1  (
+	.I0(\Gowin_EMPU_inst/apbtargexp2_pwrite ),
+	.I1(\Gowin_EMPU_inst/apbtargexp2_paddr [8]),
+	.I2(\Gowin_EMPU_inst/apbtargexp2_paddr [9]),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/apbtargexp2_prdata_0_6 ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n108_5 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n108_s1 .INIT=16'h1000;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n105_s1  (
+	.I0(\Gowin_EMPU_inst/apbtargexp2_pwrite ),
+	.I1(\Gowin_EMPU_inst/apbtargexp2_paddr [8]),
+	.I2(\Gowin_EMPU_inst/apbtargexp2_paddr [9]),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/apbtargexp2_prdata_0_6 ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n105_5 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n105_s1 .INIT=16'h2000;
+LUT4 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n225_s5  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/SPI_ACK_O ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/read_wait_done ),
+	.I2(\Gowin_EMPU_inst/apbtargexp2_pwrite ),
+	.I3(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/apbtargexp2_prdata_0_5 ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n225_16 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n225_s5 .INIT=16'h5400;
+LUT3 \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n225_s7  (
+	.I0(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/SPI_ACK_O ),
+	.I1(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/read_wait_done ),
+	.I2(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n108_5 ),
+	.F(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n225_14 )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n225_s7 .INIT=8'h54;
+DFFC \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw04_cs_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n90_3 ),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw04_cs )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw04_cs_s0 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw08_cs_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n92_3 ),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw08_cs )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw08_cs_s0 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw0c_cs_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n95_3 ),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw0c_cs )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw0c_cs_s0 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw10_cs_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n97_3 ),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw10_cs )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw10_cs_s0 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_wr_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n105_5 ),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_wr )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_wr_s0 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rd_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n108_5 ),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rd )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rd_s0 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data_12_s0  (
+	.D(\Gowin_EMPU_inst/apbtargexp2_pwdata [12]),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data [12])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data_12_s0 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data_10_s0  (
+	.D(\Gowin_EMPU_inst/apbtargexp2_pwdata [10]),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data [10])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data_10_s0 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data_9_s0  (
+	.D(\Gowin_EMPU_inst/apbtargexp2_pwdata [9]),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data [9])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data_9_s0 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data_8_s0  (
+	.D(\Gowin_EMPU_inst/apbtargexp2_pwdata [8]),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data [8])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data_8_s0 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data_7_s0  (
+	.D(\Gowin_EMPU_inst/apbtargexp2_pwdata [7]),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data [7])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data_7_s0 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data_6_s0  (
+	.D(\Gowin_EMPU_inst/apbtargexp2_pwdata [6]),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data [6])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data_6_s0 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data_5_s0  (
+	.D(\Gowin_EMPU_inst/apbtargexp2_pwdata [5]),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data [5])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data_5_s0 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data_4_s0  (
+	.D(\Gowin_EMPU_inst/apbtargexp2_pwdata [4]),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data [4])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data_4_s0 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data_3_s0  (
+	.D(\Gowin_EMPU_inst/apbtargexp2_pwdata [3]),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data [3])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data_3_s0 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data_2_s0  (
+	.D(\Gowin_EMPU_inst/apbtargexp2_pwdata [2]),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data [2])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data_2_s0 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data_1_s0  (
+	.D(\Gowin_EMPU_inst/apbtargexp2_pwdata [1]),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data [1])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data_1_s0 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data_0_s0  (
+	.D(\Gowin_EMPU_inst/apbtargexp2_pwdata [0]),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data [0])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data_0_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rxdata_7_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data [7]),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_latch_flag ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rxdata [7])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rxdata_7_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rxdata_6_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data [6]),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_latch_flag ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rxdata [6])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rxdata_6_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rxdata_5_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data [5]),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_latch_flag ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rxdata [5])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rxdata_5_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rxdata_4_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data [4]),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_latch_flag ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rxdata [4])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rxdata_4_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rxdata_3_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data [3]),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_latch_flag ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rxdata [3])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rxdata_3_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rxdata_2_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data [2]),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_latch_flag ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rxdata [2])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rxdata_2_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rxdata_1_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data [1]),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_latch_flag ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rxdata [1])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rxdata_1_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rxdata_0_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data [0]),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_latch_flag ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rxdata [0])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rxdata_0_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_txdata_7_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data [7]),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n163_5 ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_txdata [7])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_txdata_7_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_txdata_6_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data [6]),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n163_5 ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_txdata [6])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_txdata_6_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_txdata_5_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data [5]),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n163_5 ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_txdata [5])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_txdata_5_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_txdata_4_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data [4]),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n163_5 ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_txdata [4])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_txdata_4_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_txdata_3_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data [3]),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n163_5 ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_txdata [3])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_txdata_3_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_txdata_2_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data [2]),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n163_5 ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_txdata [2])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_txdata_2_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_txdata_1_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data [1]),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n163_5 ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_txdata [1])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_txdata_1_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_txdata_0_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data [0]),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n163_5 ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_txdata [0])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_txdata_0_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_dir_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data [0]),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n190_3 ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_dir )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_dir_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_cpha_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data [1]),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n190_3 ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_cpha )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_cpha_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_cpol_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data [2]),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n190_3 ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_cpol )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_cpol_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_clksel_1_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data [4]),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n190_3 ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_clksel [1])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_clksel_1_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_clksel_0_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data [3]),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n190_3 ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_clksel [0])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_clksel_0_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_iroe_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data [5]),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n190_3 ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_iroe )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_iroe_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_itoe_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data [6]),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n190_3 ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_itoe )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_itoe_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_itrdy_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data [8]),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n190_3 ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_itrdy )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_itrdy_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_irrdy_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data [9]),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n190_3 ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_irrdy )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_irrdy_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_ie_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data [10]),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n190_3 ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_ie )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_ie_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_sso_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data [12]),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n190_3 ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_sso )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_sso_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/SPI_DAT_O_12_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n308_5 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rd ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/SPI_DAT_O [12])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/SPI_DAT_O_12_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/SPI_DAT_O_10_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n310_5 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rd ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/SPI_DAT_O [10])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/SPI_DAT_O_10_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/SPI_DAT_O_9_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n311_5 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rd ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/SPI_DAT_O [9])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/SPI_DAT_O_9_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/SPI_DAT_O_8_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n312_5 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rd ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/SPI_DAT_O [8])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/SPI_DAT_O_8_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/SPI_DAT_O_7_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n313_3 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rd ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/SPI_DAT_O [7])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/SPI_DAT_O_7_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/SPI_DAT_O_6_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n314_3 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rd ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/SPI_DAT_O [6])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/SPI_DAT_O_6_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/SPI_DAT_O_5_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n315_3 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rd ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/SPI_DAT_O [5])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/SPI_DAT_O_5_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/SPI_DAT_O_4_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n316_3 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rd ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/SPI_DAT_O [4])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/SPI_DAT_O_4_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/SPI_DAT_O_3_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n317_3 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rd ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/SPI_DAT_O [3])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/SPI_DAT_O_3_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/SPI_DAT_O_2_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n318_3 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rd ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/SPI_DAT_O [2])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/SPI_DAT_O_2_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/SPI_DAT_O_1_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n319_3 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rd ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/SPI_DAT_O [1])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/SPI_DAT_O_1_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/SPI_DAT_O_0_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n320_3 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rd ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/SPI_DAT_O [0])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/SPI_DAT_O_0_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_ssmask_0_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/latch_s_data [0]),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n386_3 ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_ssmask [0])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_ssmask_0_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data_7_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n429_5 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n428_6 ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data [7])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data_7_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data_6_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n430_3 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n428_6 ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data [6])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data_6_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data_5_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n431_3 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n428_6 ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data [5])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data_5_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data_4_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n432_3 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n428_6 ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data [4])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data_4_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data_3_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n433_3 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n428_6 ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data [3])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data_3_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data_2_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n434_3 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n428_6 ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data [2])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data_2_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data_1_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n435_3 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n428_6 ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data [1])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data_1_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data_0_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n436_5 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n428_6 ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data [0])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_shift_data_0_s0 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_latch_flag_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n460_3 ),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_latch_flag )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/rx_latch_flag_s0 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/clock_cnt_4_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n475_5 ),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/clock_cnt [4])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/clock_cnt_4_s0 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/clock_cnt_3_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n476_5 ),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/clock_cnt [3])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/clock_cnt_3_s0 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/clock_cnt_2_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n477_5 ),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/clock_cnt [2])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/clock_cnt_2_s0 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/clock_cnt_1_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n478_5 ),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/clock_cnt [1])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/clock_cnt_1_s0 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/clock_cnt_0_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n479_5 ),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/clock_cnt [0])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/clock_cnt_0_s0 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status_2_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n_status [2]),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status [2])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status_2_s0 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status_1_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n_status [1]),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status [1])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status_1_s0 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status_0_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n_status [0]),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status [0])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/c_status_0_s0 .INIT=1'b0;
+DFFP \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_tmt_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n778_7 ),
+	.CLK(sys_clk),
+	.PRESET(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_tmt )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_tmt_s0 .INIT=1'b1;
+DFFC \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw00_cs_s0  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n88_3 ),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw00_cs )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/dw00_cs_s0 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/pending_data_s1  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n162_3 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/pending_data_8 ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/pending_data )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/pending_data_s1 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt_5_s1  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n610_5 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt_5_8 ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt [5])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt_5_s1 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt_4_s1  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n611_5 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt_5_8 ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt [4])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt_4_s1 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt_3_s1  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n612_5 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt_5_8 ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt [3])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt_3_s1 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt_2_s1  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n613_8 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt_5_8 ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt [2])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt_2_s1 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt_1_s1  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n614_5 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt_5_8 ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt [1])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt_1_s1 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt_0_s1  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n615_5 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt_5_8 ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt [0])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/data_cnt_0_s1 .INIT=1'b0;
+DFFPE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_trdy_s1  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n742_3 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_trdy_10 ),
+	.PRESET(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_trdy )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_trdy_s1 .INIT=1'b1;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_toe_s1  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n752_5 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_toe_8 ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_toe )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_toe_s1 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rrdy_s1  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n764_6 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rrdy_10 ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rrdy )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_rrdy_s1 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_roe_s1  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n764_6 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n765_3 ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_roe )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/reg_roe_s1 .INIT=1'b0;
+DFFCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/SCLK_s1  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n416_4 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n416_6 ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/SCLK_Z )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/SCLK_s1 .INIT=1'b0;
+DFFNCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n_status_2_s3  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n537_18 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n_status_1_11 ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n_status [2])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n_status_2_s3 .INIT=1'b0;
+DFFNCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n_status_1_s3  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n538_20 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n_status_1_11 ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n_status [1])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n_status_1_s3 .INIT=1'b0;
+DFFNCE \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n_status_0_s3  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n539_18 ),
+	.CLK(sys_clk),
+	.CE(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n_status_1_11 ),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n_status [0])
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n_status_0_s3 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/SPI_ACK_O_s4  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n225_16 ),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/SPI_ACK_O )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/SPI_ACK_O_s4 .INIT=1'b0;
+DFFC \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/read_wait_done_s4  (
+	.D(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/n225_14 ),
+	.CLK(sys_clk),
+	.CLEAR(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 ),
+	.Q(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/read_wait_done )
+);
+defparam \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/read_wait_done_s4 .INIT=1'b0;
+INV \Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_s2  (
+	.I(reset_n),
+	.O(\Gowin_EMPU_inst/u_gw_peripherals_interconnect/u_gw_cmsdk_apb2_spi/RST_I_6 )
+);
+endmodule

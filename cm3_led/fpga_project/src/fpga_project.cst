@@ -1,0 +1,16 @@
+//Copyright (C)2014-2021 Gowin Semiconductor Corporation.
+//All rights reserved. 
+//File Title: Physical Constraints file
+//GOWIN Version: 1.9.8 Education
+//Part Number: GW1NSR-LV4CQN48PC6/I5
+//Device: GW1NSR-4C
+//Created Time: Sat 01 08 17:17:09 2022
+
+IO_LOC "gpio_io[1]" 14;
+IO_PORT "gpio_io[1]" PULL_MODE=UP DRIVE=8;
+IO_LOC "gpio_io[0]" 10;
+IO_PORT "gpio_io[0]" PULL_MODE=UP DRIVE=8;
+IO_LOC "reset_n_i" 15;
+IO_PORT "reset_n_i" PULL_MODE=UP;
+IO_LOC "clkin_i" 45;
+IO_PORT "clkin_i" PULL_MODE=UP;
