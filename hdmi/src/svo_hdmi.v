@@ -50,16 +50,6 @@ module svo_hdmi(
 	wire [SVO_BITS_PER_PIXEL-1:0] vdma_tdata;
 	wire [0:0] vdma_tuser;
 
-	wire video_tvalid;
-	wire video_tready;
-	wire [SVO_BITS_PER_PIXEL-1:0] video_tdata;
-	wire [0:0] video_tuser;
-
-	wire term_out_tvalid;
-	// wire term_out_tready;
-	wire [1:0] term_out_tdata;
-	wire [0:0] term_out_tuser;
-
 	wire video_enc_tvalid, video_enc_tready;
 	wire [SVO_BITS_PER_PIXEL-1:0] video_enc_tdata;
 	wire [3:0] video_enc_tuser;
@@ -92,46 +82,14 @@ module svo_hdmi(
 		.out_axis_tuser(vdma_tuser)
 	);
 
-	svo_term #( `SVO_PASS_PARAMS ) svo_term (
-		.clk(clk),
-		.oclk(clk_pixel),
-		.resetn(clk_resetn),
-
-		.out_axis_tvalid(term_out_tvalid),
-		.out_axis_tready(term_out_tready),
-		.out_axis_tdata(term_out_tdata),
-		.out_axis_tuser(term_out_tuser)
-	);
-
-	svo_overlay #( `SVO_PASS_PARAMS ) svo_overlay (
+	svo_enc #( `SVO_PASS_PARAMS ) svo_enc (
 		.clk(clk_pixel),
 		.resetn(clk_pixel_resetn),
-		.enable(1'b1),
 
 		.in_axis_tvalid(vdma_tvalid),
 		.in_axis_tready(vdma_tready),
 		.in_axis_tdata(vdma_tdata),
 		.in_axis_tuser(vdma_tuser),
-
-		.over_axis_tvalid(term_out_tvalid),
-		.over_axis_tready(term_out_tready),
-		.over_axis_tdata(white_pixval),
-		.over_axis_tuser({term_out_tdata == 2'b10, term_out_tuser}),
-
-		.out_axis_tvalid(video_tvalid),
-		.out_axis_tready(video_tready),
-		.out_axis_tdata(video_tdata),
-		.out_axis_tuser(video_tuser)
-	);
-
-	svo_enc #( `SVO_PASS_PARAMS ) svo_enc (
-		.clk(clk_pixel),
-		.resetn(clk_pixel_resetn),
-
-		.in_axis_tvalid(video_tvalid),
-		.in_axis_tready(video_tready),
-		.in_axis_tdata(video_tdata),
-		.in_axis_tuser(video_tuser),
 
 		.out_axis_tvalid(video_enc_tvalid),
 		.out_axis_tready(video_enc_tready),
