@@ -5,12 +5,13 @@
     - [led\_test](#led_test)
     - [dk\_video](#dk_video)
     - [hdmi](#hdmi)
+    - [Nano4K\_HDMI](#nano4k_hdmi)
 
 ## Example
 
 ### led_test
 
-An example ro drive onboard led.
+An example to drive onboard led.
 
 ### dk_video
 
@@ -19,3 +20,7 @@ A demo to drive OV2640 camera and HDMI output.
 ### hdmi
 
 A HDMI frame demo based on [SVO](https://github.com/cliffordwolf/SimpleVOut).
+
+### Nano4K_HDMI
+
+A demo, shows that Nano 4K HDMI 2K output, but no video, with 2 frames detection by monitor.
