@@ -22,6 +22,7 @@
  "Generate_Post_Place_File" : false,
  "Generate_SDF_File" : false,
  "GwSyn_Loop_Limit" : 2000,
+ "HOTBOOT" : false,
  "I2C" : false,
  "I2C_SLAVE_ADDR" : "00",
  "Implicit_Initial_Value_Support" : false,
@@ -37,6 +38,7 @@
  "Number_of_Critical_Paths" : "",
  "Number_of_Start/End_Points" : "",
  "OUTPUT_BASE_NAME" : "dk_video",
+ "POWER_ON_RESET_MONITOR" : true,
  "PRINT_BSRAM_VALUE" : true,
  "PROGRAM_DONE_BYPASS" : false,
  "Pipelining" : true,
@@ -54,6 +56,7 @@
  "Resolve_Mixed_Drivers" : false,
  "Resource_Sharing" : true,
  "Retiming" : false,
+ "Route_Maxfan" : "23",
  "Route_Option" : "0",
  "Run_Timing_Driven" : true,
  "SECURE_MODE" : false,
@@ -74,5 +77,6 @@
  "WAKE_UP" : "0",
  "Write_Vendor_Constraint_File" : true,
  "dsp_balance" : false,
- "show_all_warnings" : false
+ "show_all_warnings" : false,
+ "turn_off_bg" : false
 }
