@@ -1,7 +1,0 @@
-D:\Gowin\Gowin_V1.9.6.01Beta\SynplifyPro\bin64\syn_nfilter.exe  -link  -multisrs  D:\proj\g1nsr4_goai_hyram\project\src\hyperram_memory_interface\temp\HYPERRAM\rev_1\synwork\hyperram_memory_interface_comp.srs  -osyn  D:\proj\g1nsr4_goai_hyram\project\src\hyperram_memory_interface\temp\HYPERRAM\rev_1\synwork\hyperram_memory_interface_mult.srs  -log  D:\proj\g1nsr4_goai_hyram\project\src\hyperram_memory_interface\temp\HYPERRAM\rev_1\synlog\hyperram_memory_interface_multi_srs_gen.srr 
-relcom:..\..\..\..\..\..\..\..\..\Gowin\Gowin_V1.9.6.01Beta\SynplifyPro\bin64\syn_nfilter.exe -link -multisrs ..\synwork\hyperram_memory_interface_comp.srs -osyn ..\synwork\hyperram_memory_interface_mult.srs -log ..\synlog\hyperram_memory_interface_multi_srs_gen.srr
-rc:0 success:1 runtime:1
-file:..\synwork\hyperram_memory_interface_comp.srs|io:i|time:1597651802|size:170239|exec:0|csum:6D06F22AF47C1383C1FEFBA01735A438
-file:..\synwork\hyperram_memory_interface_mult.srs|io:o|time:1597651804|size:4283|exec:0|csum:
-file:..\synlog\hyperram_memory_interface_multi_srs_gen.srr|io:o|time:1597651804|size:1409|exec:0|csum:
-file:..\..\..\..\..\..\..\..\..\Gowin\Gowin_V1.9.6.01Beta\SynplifyPro\bin64\syn_nfilter.exe|io:i|time:1589223566|size:8875008|exec:1|csum:CB377A51AC326E9B678CA2CFE4C984B2

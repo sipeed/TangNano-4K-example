@@ -1,8 +1,0 @@
-@W: MT453 |clock period is too long for clock _~hpram_wd_HyperRAM_Memory_Interface_Top_|step_derived_clock[0], changing period from 100000.0 to 20000.0 ns, rise from 0.0 ns to 0.0 ns, and fall from 50000.0 ns to 10000.0 ns. 
-@W: MT453 |clock period is too long for clock _~hpram_init_HyperRAM_Memory_Interface_Top_|read_calibration[0]_VALUE_derived_clock[0], changing period from 100000.0 to 20000.0 ns, rise from 0.0 ns to 0.0 ns, and fall from 50000.0 ns to 10000.0 ns. 
-@W: MT246 :"d:\gowin\gowin_v1.9.6.01beta\ide\ipcore\hyperram_emb\data\hpram_code_166.v":2181:8:2181:13|Blackbox CLKDIV is missing a user supplied timing model. This may have a negative effect on timing analysis and optimizations (Quality of Results)
-@W: MT246 :"d:\gowin\gowin_v1.9.6.01beta\ide\ipcore\hyperram_emb\data\hpram_code_166.v":2173:7:2173:20|Blackbox DHCEN is missing a user supplied timing model. This may have a negative effect on timing analysis and optimizations (Quality of Results)
-@W: MT246 :"d:\gowin\gowin_v1.9.6.01beta\ide\ipcore\hyperram_emb\data\hpram_code_166.v":2161:2:2161:6|Blackbox DLL is missing a user supplied timing model. This may have a negative effect on timing analysis and optimizations (Quality of Results)
-@W: MT420 |Found inferred clock _~hpram_top_HyperRAM_Memory_Interface_Top_|clk_out_inferred_clock with period 7.93ns. Please declare a user-defined clock on net u_hpram_top.clk_out.
-@W: MT420 |Found inferred clock HyperRAM_Memory_Interface_Top|clk with period 6.34ns. Please declare a user-defined clock on port clk.
-@W: MT420 |Found inferred clock _~hpram_top_HyperRAM_Memory_Interface_Top_|clk_x2p_inferred_clock with period 10.00ns. Please declare a user-defined clock on net u_hpram_top.clk_x2p.

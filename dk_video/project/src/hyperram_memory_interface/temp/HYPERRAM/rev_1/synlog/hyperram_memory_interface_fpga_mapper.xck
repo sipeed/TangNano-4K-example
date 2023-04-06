@@ -1,5 +1,0 @@
-CKID0001:@|S:u_hpram_top.clkdiv@|E:u_hpram_top.rd_data_valid_d@|F:@syn_sample_clock_path==CKID0001@|M:ClockId0001 
-CKID0002:@|S:u_hpram_top.u_dqce_clk_x2p@|E:u_hpram_top.u_hpram_wd.data_lane_gen\[0\]\.u_hpram_lane.mask_oser4@|F:@syn_sample_clock_path==CKID0002@|M:ClockId0002 
-CKID0003:@|S:u_hpram_top.u_hpram_init.read_calibration\[0\]\.VALUE[0]@|E:u_hpram_top.u_hpram_wd.dq_iodelay_gen0\[0\]\.genblk1\[5\]\.iodelay@|F:@syn_sample_clock_path==CKID0003@|M:ClockId0003 
-CKID0004:@|S:u_hpram_top.u_hpram_wd.step[0]@|E:u_hpram_top.u_hpram_wd.ck_delay\[0\]\.iodelay@|F:@syn_sample_clock_path==CKID0004@|M:ClockId0004 
-CKID0005:@|S:clk@|E:u_hpram_top.u_hpram_sync.cs_memsync[0]@|F:@syn_sample_clock_path==CKID0005@|M:ClockId0005 

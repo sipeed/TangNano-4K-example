@@ -1,5 +1,0 @@
-@N: MF916 |Option synthesis_strategy=base is enabled. 
-@N: MF248 |Running in 64-bit mode.
-@N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
-@N: FX1143 |Skipping assigning INTERNAL_VREF to iobanks, because the table of mapping from pin to iobank is not initialized.
-@N: BN225 |Writing default property annotation file D:\proj\g1nsr4_goai_hyram\project\src\hyperram_memory_interface\temp\HYPERRAM\rev_1\hyperram_memory_interface.sap.

@@ -1,15 +1,3 @@
-// ---------------------------------------------------------------------
-// File name         : syn_gen.v
-// Module name       : syn_gen
-// Module Description: 
-// Created by        : Caojie
-// ---------------------------------------------------------------------
-// Release history
-// VERSION |   Date      | AUTHOR  |    DESCRIPTION
-// --------------------------------------------------------------------
-//   1.0   | 16-Jul-2019 | Caojie  |    initial
-// --------------------------------------------------------------------
-
 module syn_gen
 (
     input              I_pxl_clk   ,//pixel clock
@@ -24,8 +12,8 @@ module syn_gen
     input      [15:0]  I_v_res     ,//ver resolution 
     input      [15:0]  I_rd_hres   ,
     input      [15:0]  I_rd_vres   ,
-    input              I_hs_pol    ,//HS polarity , 0:¸º¼«ÐÔ£¬1£ºÕý¼«ÐÔ
-    input              I_vs_pol    ,//VS polarity , 0:¸º¼«ÐÔ£¬1£ºÕý¼«ÐÔ
+    input              I_hs_pol    ,//HS polarity , 0:ï¿½ï¿½ï¿½ï¿½ï¿½Ô£ï¿½1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    input              I_vs_pol    ,//VS polarity , 0:ï¿½ï¿½ï¿½ï¿½ï¿½Ô£ï¿½1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     output reg         O_rden      ,
     output reg         O_de        ,   
     output reg         O_hs        ,

@@ -1,26 +1,4 @@
-// ==============0ooo===================================================0ooo===========
-// =  Copyright (C) 2014-2020 Gowin Semiconductor Technology Co.,Ltd.
-// =                     All rights reserved.
-// ====================================================================================
-// 
-//  __      __      __
-//  \ \    /  \    / /   [File name   ] video_top.v
-//   \ \  / /\ \  / /    [Description ] Video demo
-//    \ \/ /  \ \/ /     [Timestamp   ] Friday May 26 14:00:30 2019
-//     \  /    \  /      [version     ] 1.0.0
-//      \/      \/
-//
-// ==============0ooo===================================================0ooo===========
-// Code Revision History :
-// ----------------------------------------------------------------------------------
-// Ver:    |  Author    | Mod. Date    | Changes Made:
-// ----------------------------------------------------------------------------------
-// V1.0    | Caojie     | 11/22/19     | Initial version 
-// ----------------------------------------------------------------------------------
-// ==============0ooo===================================================0ooo===========
-  
-module video_top
-(
+module video_top(
     input             I_clk           , //27Mhz
     input             I_rst_n         ,
     output     [1:0]  O_led           ,
@@ -40,7 +18,9 @@ module video_top
     output            O_tmds_clk_p    ,
     output            O_tmds_clk_n    ,
     output     [2:0]  O_tmds_data_p   ,//{r,g,b}
-    output     [2:0]  O_tmds_data_n   
+    output     [2:0]  O_tmds_data_n   ,
+
+    input key
 );
 
 //==================================================
@@ -117,9 +97,9 @@ wire clk_12M;
 
 //===================================================
 //LED test
-always @(posedge I_clk or negedge I_rst_n) //I_clk
+always @(posedge I_clk or negedge sys_resetn) //I_clk
 begin
-    if(!I_rst_n)
+    if(!sys_resetn)
         run_cnt <= 32'd0;
     else if(run_cnt >= 32'd27_000_000)
         run_cnt <= 32'd0;
@@ -139,7 +119,7 @@ assign  XCLK = clk_12M;
 testpattern testpattern_inst
 (
     .I_pxl_clk   (I_clk              ),//pixel clock
-    .I_rst_n     (I_rst_n            ),//low active 
+    .I_rst_n     (sys_resetn         ),//low active 
     .I_mode      ({1'b0,cnt_vs[7:6]} ),//data select
     .I_single_r  (8'd0               ),
     .I_single_g  (8'd255             ),
@@ -167,9 +147,9 @@ begin
     vs_r<=tp0_vs_in;
 end
 
-always@(posedge I_clk or negedge I_rst_n)
+always@(posedge I_clk or negedge sys_resetn)
 begin
-    if(!I_rst_n)
+    if(!sys_resetn)
         cnt_vs<=0;
     else if(cnt_vs==10'h3ff)
         cnt_vs<=cnt_vs;
@@ -178,6 +158,14 @@ begin
     else
         cnt_vs<=cnt_vs;
 end 
+
+// Camera reset
+
+Reset_Sync u_Reset_Sync (
+  .resetn(sys_resetn),
+  .ext_reset(I_rst_n & pll_lock),
+  .clk(I_clk)
+);
 
 //==============================================================================
 OV2640_Controller u_OV2640_Controller
@@ -191,17 +179,17 @@ OV2640_Controller u_OV2640_Controller
     .pwdn            ()             // PWDN signal for OV7670
 );
 
-always @(posedge PIXCLK or negedge I_rst_n) //I_clk
+always @(posedge PIXCLK or negedge sys_resetn) //I_clk
 begin
-    if(!I_rst_n)
+    if(!sys_resetn)
         pixdata_d1 <= 10'd0;
     else
         pixdata_d1 <= PIXDATA;
 end
 
-always @(posedge PIXCLK or negedge I_rst_n) //I_clk
+always @(posedge PIXCLK or negedge sys_resetn) //I_clk
 begin
-    if(!I_rst_n)
+    if(!sys_resetn)
         hcnt <= 1'd0;
     else if(HREF)
         hcnt <= ~hcnt;
@@ -216,23 +204,24 @@ assign cam_data = {PIXDATA[9:5],PIXDATA[9:4],PIXDATA[9:5]}; //RAW10
 
 //==============================================
 //data width 16bit   
-    assign ch0_vfb_clk_in  = (cnt_vs <= 10'h1ff) ? I_clk : PIXCLK;       
-    assign ch0_vfb_vs_in   = (cnt_vs <= 10'h1ff) ? ~tp0_vs_in : VSYNC;  //negative
-    assign ch0_vfb_de_in   = (cnt_vs <= 10'h1ff) ? tp0_de_in : HREF;//hcnt;  
-    assign ch0_vfb_data_in = (cnt_vs <= 10'h1ff) ? {tp0_data_r[7:3],tp0_data_g[7:2],tp0_data_b[7:3]} : cam_data; // RGB565
+    assign ch0_vfb_clk_in  = key_flag ? I_clk : PIXCLK;       
+    assign ch0_vfb_vs_in   = key_flag ? ~tp0_vs_in : VSYNC;  //negative
+    assign ch0_vfb_de_in   = key_flag ? tp0_de_in : HREF;//hcnt;  
+    assign ch0_vfb_data_in = key_flag ? {tp0_data_r[7:3],tp0_data_g[7:2],tp0_data_b[7:3]} : cam_data; // RGB565
   
-    // assign ch0_vfb_clk_in  = PIXCLK;       
-    // assign ch0_vfb_vs_in   = VSYNC;  //negative
-    // assign ch0_vfb_de_in   = HREF;//hcnt;  
-    // assign ch0_vfb_data_in = cam_data; // RGB565
-
+key_flag key_flag_inst(
+    .clk(I_clk),
+    .rst_n(I_rst_n),
+    .key(key),
+    .key_flag(key_flag)
+);
 
 //=====================================================
 //SRAM 控制模块 
 Video_Frame_Buffer_Top Video_Frame_Buffer_Top_inst
 ( 
     .I_rst_n            (init_calib       ),//rst_n            ),
-    .I_dma_clk          (dma_clk          ),   //sram_clk         ),
+    .I_dma_clk          (dma_clk          ),//sram_clk         ),
     .I_wr_halt          (1'd0             ), //1:halt,  0:no halt
     .I_rd_halt          (1'd0             ), //1:halt,  0:no halt
     // video data input           
@@ -273,7 +262,7 @@ HyperRAM_Memory_Interface_Top HyperRAM_Memory_Interface_Top_inst
     .clk            (I_clk          ),
     .memory_clk     (memory_clk     ),
     .pll_lock       (mem_pll_lock   ),
-    .rst_n          (I_rst_n        ),  //rst_n
+    .rst_n          (sys_resetn     ),  //rst_n
     .O_hpram_ck     (O_hpram_ck     ),
     .O_hpram_ck_n   (O_hpram_ck_n   ),
     .IO_hpram_rwds  (IO_hpram_rwds  ),
@@ -315,7 +304,7 @@ syn_gen syn_gen_inst
     .O_vs        (syn_off0_vs     )
 );
 
-localparam N = 5; //delay N clocks
+localparam N = 2; //delay N clocks
                           
 reg  [N-1:0]  Pout_hs_dn   ;
 reg  [N-1:0]  Pout_vs_dn   ;
@@ -340,9 +329,9 @@ end
 //==============================================================================
 //TMDS TX
 assign rgb_data    = off0_syn_de ? {off0_syn_data[15:11],3'd0,off0_syn_data[10:5],2'd0,off0_syn_data[4:0],3'd0} : 24'h0000ff;//{r,g,b}
-assign rgb_vs      = Pout_vs_dn[4];//syn_off0_vs;
-assign rgb_hs      = Pout_hs_dn[4];//syn_off0_hs;
-assign rgb_de      = Pout_de_dn[4];//off0_syn_de;
+assign rgb_vs      = Pout_vs_dn[N-1];//syn_off0_vs;
+assign rgb_hs      = Pout_hs_dn[N-1];//syn_off0_hs;
+assign rgb_de      = Pout_de_dn[N-1];//off0_syn_de;
 
 
 TMDS_PLLVR TMDS_PLLVR_inst
@@ -352,7 +341,7 @@ TMDS_PLLVR TMDS_PLLVR_inst
 ,.lock      (pll_lock  )     //output lock
 );
 
-assign hdmi_rst_n = I_rst_n & pll_lock;
+assign hdmi_rst_n = sys_resetn & pll_lock;
 
 CLKDIV u_clkdiv
 (.RESETN(hdmi_rst_n)
@@ -379,6 +368,66 @@ DVI_TX_Top DVI_TX_Top_inst
     .O_tmds_data_n (O_tmds_data_n )
 );
 
+endmodule
 
+module Reset_Sync (
+ input clk,
+ input ext_reset,
+ output resetn
+);
+
+ reg [3:0] reset_cnt = 0;
+ 
+ always @(posedge clk or negedge ext_reset) begin
+     if (~ext_reset)
+         reset_cnt <= 4'b0;
+     else
+         reset_cnt <= reset_cnt + !resetn;
+ end
+ 
+ assign resetn = &reset_cnt;
+
+endmodule
+
+module key_flag#(
+    parameter clk_frequency = 27_000_000 ,
+    parameter io_num        = 1
+)(
+    input                   clk , // Clock in
+    input                   rst_n,
+    input                   key,
+    output                  key_flag
+);
+
+parameter count_ms = clk_frequency / 1000 ;
+
+parameter count_20ms = count_ms * 20 -1 ;
+parameter count_500ms = count_ms * 500 -1 ;
+
+reg [($clog2(count_20ms)-1)+10:0] count_20ms_reg;
+reg [$clog2(count_500ms)-1:0] count_500ms_reg;
+
+// key flag
+
+reg key_input = 1'd1;
+
+always @(posedge clk) begin
+    key_input <= ~key  ;
+end
+
+reg key_flag;
+
+always @(posedge clk or negedge rst_n) begin
+    if (!rst_n)
+        count_20ms_reg <= 'd0;
+    else if(key_input)
+        count_20ms_reg <= count_20ms_reg + 'd1 ;
+    else if(count_20ms_reg >= count_20ms) begin
+            key_flag = ~key_flag;
+            count_20ms_reg <= 'd0;;
+    end
+    else
+        count_20ms_reg <= 'd0;;
+end
 
 endmodule

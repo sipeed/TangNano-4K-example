@@ -1,2 +1,0 @@
-@W: CG286 :"D:\Gowin\Gowin_V1.9.6.01Beta\IDE\ipcore\HYPERRAM_EMB\data\hpram_code_166.v":1786:2:1786:5|Case statement has both a full_case directive and a default clause -- ignoring full_case directive.
-
