@@ -3,9 +3,9 @@
 - [TangNano-4K-example](#tangnano-4k-example)
   - [Example](#example)
     - [led\_test](#led_test)
-    - [dk\_video](#dk_video)
-    - [hdmi](#hdmi)
-    - [Nano4K\_HDMI](#nano4k_hdmi)
+    - [camera\_hdmi](#camera_hdmi)
+    - [hdmi\_720p](#hdmi_720p)
+    - [hdmi\_2k\_no\_video](#hdmi_2k_no_video)
     - [key\_blink](#key_blink)
 
 ## Example
@@ -14,17 +14,17 @@
 
 An example to drive onboard led.
 
-### dk_video
+### camera_hdmi
 
 A demo to drive OV2640 camera and HDMI output.
 
 KEY_1 is reset and KEY_2 is output switch.
 
-### hdmi
+### hdmi_720p
 
 A HDMI frame demo based on [SVO](https://github.com/cliffordwolf/SimpleVOut).
 
-### Nano4K_HDMI
+### hdmi_2k_no_video
 
 A demo, shows that Nano 4K HDMI 2K output, but no video, with 2 frames detection by monitor.
 
