@@ -18,7 +18,7 @@ An example to drive onboard led.
 
 A demo to drive OV2640 camera and HDMI output.
 
-KEY_1 is reset and KEY_2 is output switch.
+KEY_1 is reset and KEY_2 is output switch(Camera image or HDMI output test).
 
 ### hdmi_720p
 
